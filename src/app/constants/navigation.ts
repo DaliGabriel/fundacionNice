@@ -3,7 +3,7 @@ import { NavigationItem } from "../types/navigation";
 export const navigationItems: readonly NavigationItem[] = [
   {
     title: "QUIENES SOMOS",
-    href: "/quienes-somos",
+    href: "/",
   },
   {
     title: "NUESTRAS ALIANZAS",

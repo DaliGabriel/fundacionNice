@@ -1,5 +1,5 @@
 import ContentSection from "./ContentSection/ContentSection";
-import ImageSection from "./ImageSection";
+import ImageSection from "./ContentSection/ImageSection";
 
 const ChangingLifes = () => {
   return (

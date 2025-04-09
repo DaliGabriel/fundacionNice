@@ -1,13 +1,15 @@
 import Image from "next/image";
 import { alliances } from "../../../constants/alliances";
+import Title from "../../common/Title";
 
 const OurAlliances = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#002F87] mb-12">
-          Nuestras Alianzas
-        </h2>
+        <Title
+          title="Nuestras Alianzas"
+          className="text-3xl md:text-4xl  text-[#00295c] mb-12"
+        />
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
           {alliances.map((alliance) => (
             <div
