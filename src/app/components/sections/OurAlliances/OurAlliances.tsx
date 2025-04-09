@@ -4,7 +4,7 @@ import Title from "../../common/Title";
 
 const OurAlliances = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <Title
           title="Nuestras Alianzas"
