@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  VILLA_DE_LOS_NINOS
+  SCHOLAS_OCURRENTES
+  LUDICA
+  FUNDACION_TELETON
+  FUNDACION_1111
+}
+
+model Post {
+  id          Int      @id @default(autoincrement())
+  title       String
+  cover       String   // Main cover image
+  createdAt   DateTime @default(now())
+  category    Category
+  paragraph1  String   // First text block
+  image1     String?  // First image
+  image2     String?  // Second image
+  paragraph2  String?  // Second text block
+  image3     String?  // Third image
+  image4     String?  // Fourth image
+  buttonLink  String?  // Link to external album
+  published   Boolean  @default(false)
+  updatedAt   DateTime @updatedAt
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
