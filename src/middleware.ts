@@ -5,6 +5,14 @@ import { jwtVerify } from "jose";
 export async function middleware(request: NextRequest) {
   // Check if the request is for an admin route
   if (request.nextUrl.pathname.startsWith("/admin")) {
+    // Skip authentication for login page and login API
+    if (
+      request.nextUrl.pathname === "/admin/login" ||
+      request.nextUrl.pathname === "/api/admin/login"
+    ) {
+      return NextResponse.next();
+    }
+
     const token = request.cookies.get("admin-token")?.value;
 
     if (!token) {
@@ -28,6 +36,7 @@ export async function middleware(request: NextRequest) {
 
       return NextResponse.next();
     } catch (error) {
+      console.error("Error verifying token:", error);
       // If token is invalid, redirect to login
       return NextResponse.redirect(new URL("/admin/login", request.url));
     }
@@ -37,5 +46,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/admin/:path*",
+  matcher: ["/admin/:path*", "/api/admin/:path*"],
 };

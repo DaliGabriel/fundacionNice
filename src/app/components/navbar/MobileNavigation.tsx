@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { navigationItems } from "../../constants/navigation";
-import { MobileNavigationProps } from "../../types/navigation";
+import { navigationItems } from "../../../lib/constants/navigation";
+import { MobileNavigationProps } from "../../../lib/types/navigation";
 
 const MobileNavigation = ({ toggleMenu }: MobileNavigationProps) => {
   return (

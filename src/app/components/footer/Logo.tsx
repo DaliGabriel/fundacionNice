@@ -1,4 +1,4 @@
-import { LogoProps } from "../../types/footer";
+import { LogoProps } from "../../../lib/types/footer";
 import Image from "next/image";
 
 export const Logo = ({ src, alt, width, height }: LogoProps) => (

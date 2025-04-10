@@ -24,3 +24,26 @@ export const news = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
   },
 ];
+
+export const categories = [
+  {
+    name: "La Villa de los Niños",
+    value: "VILLA_DE_LOS_NINOS",
+  },
+  {
+    name: "Scholas Ocurrentes",
+    value: "SCHOLAS_OCURRENTES",
+  },
+  {
+    name: "Lúdica",
+    value: "LUDICA",
+  },
+  {
+    name: "Fundación Teletón",
+    value: "FUNDACION_TELETON",
+  },
+  {
+    name: "Fundación 11 11",
+    value: "FUNDACION_1111",
+  },
+];

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navigationItems } from "../../constants/navigation";
+import { navigationItems } from "../../../lib/constants/navigation";
 
 const DesktopNavigation = () => {
   const pathname = usePathname();

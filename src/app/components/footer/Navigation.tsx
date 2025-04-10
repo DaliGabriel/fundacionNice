@@ -1,4 +1,4 @@
-import { NavigationProps } from "../../types/footer";
+import { NavigationProps } from "../../../lib/types/footer";
 import Link from "next/link";
 
 export const Navigation = ({ items }: NavigationProps) => (

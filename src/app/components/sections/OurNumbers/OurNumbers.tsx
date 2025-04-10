@@ -1,4 +1,4 @@
-import { stats } from "../../../constants/ourNumbers";
+import { stats } from "../../../../lib/constants/ourNumbers";
 import Title from "../../common/Title";
 import StatCard from "./StatCard";
 

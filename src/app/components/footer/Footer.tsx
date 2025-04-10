@@ -6,7 +6,7 @@ import {
   navigationItems,
   socialLinks,
   copyrightInfo,
-} from "../../constants/footer";
+} from "../../../lib/constants/footer";
 
 const Footer = () => {
   return (

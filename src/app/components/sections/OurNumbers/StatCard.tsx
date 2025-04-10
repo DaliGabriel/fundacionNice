@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { StatCardProps } from "../../../types/ourNumbers";
+import { StatCardProps } from "../../../../lib/types/ourNumbers";
 
 const StatCard = ({ icon, number, description }: StatCardProps) => {
   return (

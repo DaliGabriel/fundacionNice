@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { alliances } from "../../../constants/alliances";
+import { alliances } from "../../../../lib/constants/alliances";
 import Title from "../../common/Title";
 
 const OurAlliances = () => {

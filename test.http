@@ -1,0 +1,99 @@
+### Variables
+@baseUrl = http://localhost:3000/api
+@adminToken = eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQiLCJleHAiOjE3NDQ0MTExMTB9.Qu2oM-WFLh5hRE-0rkhl6b2eQFuhtU9Lp9D3IlxoldY
+
+### Authentication
+### Login
+POST {{baseUrl}}/admin/login
+Content-Type: application/json
+
+{
+  "username": "fundacion_admin",
+  "password": "cn9n7c0HFHOFC'88P,{DJ3*%u9iAqw5./B6/c(RC&%NFHFPfhur0784ynv054"
+}
+
+### Posts Management
+### Get All Posts
+GET {{baseUrl}}/admin/posts
+Authorization: Bearer {{adminToken}}
+
+### Get Single Post
+GET {{baseUrl}}/admin/posts/1
+Authorization: Bearer {{adminToken}}
+
+### Create Post
+POST {{baseUrl}}/admin/posts
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "New Blog Post",
+  "cover": "https://example.com/cover.jpg",
+  "category": "FUNDACION_1111",
+  "paragraph1": "This is the first paragraph of the blog post...",
+  "image1": "https://example.com/image1.jpg",
+  "image2": "https://example.com/image2.jpg",
+  "paragraph2": "This is the second paragraph...",
+  "image3": "https://example.com/image3.jpg",
+  "image4": "https://example.com/image4.jpg",
+  "buttonLink": "https://example.com",
+  "published": true
+}
+
+### Update Post
+PUT {{baseUrl}}/admin/posts/7
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "Updated Blog Post",
+  "cover": "https://example.com/new-cover.jpg",
+  "category": "LUDICA",
+  "paragraph1": "Updated first paragraph...",
+  "image1": "https://example.com/new-image1.jpg",
+  "image2": "https://example.com/new-image2.jpg",
+  "paragraph2": "Updated second paragraph...",
+  "image3": "https://example.com/new-image3.jpg",
+  "image4": "https://example.com/new-image4.jpg",
+  "buttonLink": "https://example.com/updated",
+  "published": false
+}
+
+### Delete Post
+DELETE {{baseUrl}}/admin/posts/7
+Authorization: Bearer {{adminToken}}
+
+### Test Cases
+### Missing Required Fields
+POST {{baseUrl}}/admin/posts
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "Incomplete Post"
+}
+
+### Invalid Category
+POST {{baseUrl}}/admin/posts
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "Invalid Category Post",
+  "cover": "https://example.com/cover.jpg",
+  "category": "INVALID_CATEGORY",
+  "paragraph1": "This is a test post..."
+}
+
+### Invalid Credentials
+POST {{baseUrl}}/admin/login
+Content-Type: application/json
+
+{
+  "username": "wrong",
+  "password": "wrong"
+}
+
+### Non-existent Post
+GET {{baseUrl}}/admin/posts/999
+Authorization: Bearer {{adminToken}} 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { news } from "../../../constants/news";
+import { news } from "../../../../lib/constants/news";
 import Button from "../../common/Buttton";
 import Title from "../../common/Title";
 import CardCategory from "./Card/CardCategory";

@@ -1,4 +1,4 @@
-import { MobileButtonProps } from "../../types/navigation";
+import { MobileButtonProps } from "../../../lib/types/navigation";
 
 const MobileButton = ({ isMenuOpen, toggleMenu }: MobileButtonProps) => {
   return (

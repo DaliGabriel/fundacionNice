@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaFacebook } from "react-icons/fa";
 import { CiInstagram } from "react-icons/ci";
-import { SocialMediaProps } from "../../types/footer";
+import { SocialMediaProps } from "../../../lib/types/footer";
 
 export const SocialMedia = ({ title, socialLinks }: SocialMediaProps) => (
   <div className="flex flex-col items-center gap-4">

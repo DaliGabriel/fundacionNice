@@ -1,59 +1,33 @@
 import { NextResponse } from "next/server";
-import { postgres } from "../../../../lib/prisma";
+import { errorHandler } from "../../../../lib/middleware/errorHandler";
+import { createPost, getAllPosts } from "../../../../lib/services/post";
+
+export async function GET() {
+  try {
+    const posts = await getAllPosts();
+    return NextResponse.json({
+      success: true,
+      message: "Posts retrieved successfully",
+      data: posts,
+    });
+  } catch (error) {
+    return errorHandler(error);
+  }
+}
 
 export async function POST(request: Request) {
   try {
-    const { title, paragraph1 } = await request.json();
-
-    // Basic validation for required fields
-    /*
-    if (!title || !cover || !category || !paragraph1) {
-      return NextResponse.json(
-        {
-          error: "Required fields missing",
-          required: ["title", "cover", "category", "paragraph1"],
-        },
-        { status: 400 }
-      );
-    }*/
-
-    // Validate category is a valid enum value
-    /*if (!Object.values(Category).includes(category)) {
-      return NextResponse.json(
-        {
-          error: "Invalid category",
-          validCategories: Object.values(Category),
-        },
-        { status: 400 }
-      );
-    }*/
-
-    // Create the post
-    const post = await postgres.post.create({
-      data: {
-        title,
-        cover: "",
-        category: "VILLA_DE_LOS_NINOS",
-        paragraph1,
-        image1: "",
-        image2: "",
-        paragraph2: "",
-        image3: "",
-        image4: "",
-        buttonLink: "",
-        published: false,
-      },
-    });
-
-    return NextResponse.json({
-      message: "Post created successfully",
-      post,
-    });
-  } catch (error) {
-    console.error("Failed to create post:", error);
+    const body = await request.json();
+    const result = await createPost(body);
     return NextResponse.json(
-      { error: "Failed to create post" },
-      { status: 500 }
+      {
+        success: true,
+        message: "Post created successfully",
+        data: result,
+      },
+      { status: 201 }
     );
+  } catch (error) {
+    return errorHandler(error);
   }
 }
