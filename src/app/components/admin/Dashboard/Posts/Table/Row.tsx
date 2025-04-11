@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import Image from "next/image";
 import { Post } from "../../../../../../lib/types/post";
 
 interface RowProps {
@@ -11,11 +12,13 @@ const Row = ({ post, children }: RowProps) => {
     <tr key={post.id} className="hover:bg-gray-50">
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
-          <div className="h-10 w-10 flex-shrink-0">
-            <img
-              className="h-10 w-10 rounded-full object-cover"
+          <div className="h-10 w-10 flex-shrink-0 relative">
+            <Image
+              className="rounded-full object-cover"
               src={"/noticia1.jpg"}
               alt={post.title || "Post cover"}
+              fill
+              sizes="(max-width: 40px) 100vw, 40px"
             />
           </div>
           <div className="ml-4">
