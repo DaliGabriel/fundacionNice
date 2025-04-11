@@ -18,13 +18,14 @@ GET {{baseUrl}}/admin/posts
 Authorization: Bearer {{adminToken}}
 
 ### Get Single Post
-GET {{baseUrl}}/admin/posts/1
+GET {{baseUrl}}/admin/posts/2
 Authorization: Bearer {{adminToken}}
 
 ### Create Post
 POST {{baseUrl}}/admin/posts
 Content-Type: application/json
 Authorization: Bearer {{adminToken}}
+
 
 {
   "title": "New Blog Post",
