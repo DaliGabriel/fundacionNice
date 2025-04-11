@@ -1,33 +1,63 @@
 "use client";
 
-import { PostForm } from "@/app/components/admin/PostForm/PostForm";
-import { PostFormData } from "../../../lib/types/postForm";
+import { useEffect } from "react";
+import { Header } from "../../components/admin/Dashboard/Header";
+import { PostsContent } from "../../components/admin/Dashboard/Posts/PostsContent";
+import { PostModal } from "../../components/admin/Dashboard/PostModal";
+import { AlertComponent } from "../../components/admin/Alert/Alert";
+import { useAdminDashboard } from "../../../lib/hooks/useAdminDashboard";
 
 export default function AdminDashboard() {
-  const handleSubmit = async (formData: PostFormData) => {
-    try {
-      const response = await fetch("/api/admin/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+  const {
+    isModalOpen,
+    editingPost,
+    posts,
+    error,
+    alertState,
+    closeAlert,
+    contentState,
+    handleSubmit,
+    handleEdit,
+    handleDelete,
+    handleCloseModal,
+    openCreateModal,
+    fetchPosts,
+  } = useAdminDashboard();
 
-      if (!response.ok) {
-        throw new Error("Failed to create post");
-      }
-
-      alert("Post created successfully!");
-    } catch (error) {
-      throw error;
-    }
-  };
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-6">Admin Dashboard - Create Post</h1>
-      <PostForm onSubmit={handleSubmit} />
+    <div className="max-w-7xl mx-auto p-6">
+      <Header.Layout>
+        <Header.Title>Admin Dashboard</Header.Title>
+        <Header.Button setIsModalOpen={openCreateModal} />
+      </Header.Layout>
+
+      <PostsContent
+        state={contentState}
+        posts={posts}
+        error={error}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
+
+      <PostModal
+        isOpen={isModalOpen}
+        editingPost={editingPost}
+        onClose={handleCloseModal}
+        onSubmit={handleSubmit}
+      />
+
+      <AlertComponent
+        isOpen={alertState.isOpen}
+        type={alertState.type}
+        title={alertState.title}
+        message={alertState.message}
+        onClose={closeAlert}
+        onConfirm={alertState.onConfirm}
+      />
     </div>
   );
 }

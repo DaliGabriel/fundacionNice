@@ -1,12 +1,12 @@
-import { PostFormData } from "../types/postForm";
-import { validatePostData } from "../utils/postValidator";
+import { PostFormData } from "../../types/postForm";
+import { validatePostData } from "../../utils/postValidator";
 import {
   create,
   update,
   remove,
   findById,
   findAll,
-} from "../database/repositories/post";
+} from "../../database/repositories/post";
 
 export const createPost = async (postData: PostFormData) => {
   const validatedPostData = validatePostData(postData);

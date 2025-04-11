@@ -1,7 +1,7 @@
 import { PostFormProps } from "../../../../lib/types/postForm";
 import { usePostForm } from "../../../../lib/hooks/usePostForm";
 import { PostFormFields } from "./PostFormFields";
-import ErrorAlert from "../common/ErrorAlert";
+import ErrorAlert from "../ErrorAlert";
 import SubmitButton from "./SubmitButton";
 
 export const PostForm = ({ onSubmit, initialData }: PostFormProps) => {

@@ -1,8 +1,8 @@
-import { findByUsername } from "../database/repositories/admin";
-import { PostAuthData } from "../types/auth";
-import { setAuthCookie } from "../utils/cookie";
-import { createJWT } from "../utils/jwt";
-import { comparePasswords } from "../utils/password";
+import { findByUsername } from "../../database/repositories/admin";
+import { PostAuthData } from "../../types/auth";
+import { setAuthCookie } from "../../utils/cookie";
+import { createJWT } from "../../utils/jwt";
+import { comparePasswords } from "../../utils/password";
 
 export const authenticateAdmin = async (postData: PostAuthData) => {
   if (!postData.username || !postData.password) {

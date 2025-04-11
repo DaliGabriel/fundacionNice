@@ -5,7 +5,7 @@ const SubmitButton = ({ isLoading, initialData }: SubmitButtonProps) => {
     <button
       type="submit"
       disabled={isLoading}
-      className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:bg-blue-300"
+      className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:bg-blue-300 cursor-pointer"
     >
       {isLoading
         ? "Submitting..."

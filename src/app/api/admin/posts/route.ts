@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { errorHandler } from "../../../../lib/middleware/errorHandler";
-import { createPost, getAllPosts } from "../../../../lib/services/post";
+import { createPost, getAllPosts } from "../../../../lib/services/server/post";
 
 export async function GET() {
   try {

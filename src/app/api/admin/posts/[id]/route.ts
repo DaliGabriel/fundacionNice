@@ -4,7 +4,7 @@ import {
   updatePost,
   deletePost,
   getPostById,
-} from "../../../../../lib/services/post";
+} from "../../../../../lib/services/server/post";
 
 export async function GET(
   request: Request,

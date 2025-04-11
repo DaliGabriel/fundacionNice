@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { errorHandler } from "../../../../lib/middleware/errorHandler";
-import { authenticateAdmin } from "../../../../lib/services/auth";
+import { authenticateAdmin } from "../../../../lib/services/server/auth";
 
 export async function POST(request: Request) {
   try {
