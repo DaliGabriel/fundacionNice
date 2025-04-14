@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { news } from "../../../../lib/constants/news";
+import { getAllPosts } from "../../../../lib/services/server/post";
 import Button from "../../common/Buttton";
 import Title from "../../common/Title";
 import CardCategory from "./Card/CardCategory";
@@ -9,7 +9,11 @@ import CardDescription from "./Card/CardDescription";
 import CardImage from "./Card/CardImage";
 import CardLayout from "./Card/CardLayout";
 import CardTitle from "./Card/CardTitle";
-const LastNews = () => {
+
+const LastNews = async () => {
+  const posts = await getAllPosts();
+  const lastThreePosts = posts.slice(-3);
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto">
@@ -19,14 +23,20 @@ const LastNews = () => {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-4">
-          {news.map((item, index) => (
-            <CardLayout key={index}>
-              <CardImage image={item.image} title={item.title} />
+          {lastThreePosts.map((post) => (
+            <CardLayout key={post.id}>
+              <CardImage image={post.cover} title={post.title} />
               <CardContentLayout>
-                <CardCategory category={item.category} />
-                <CardDate date={item.date} />
-                <CardTitle title={item.title} />
-                <CardDescription description={item.description} />
+                <CardCategory category={post.category} />
+                <CardDate
+                  date={new Date(post.createdAt).toLocaleDateString("es-ES", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                />
+                <CardTitle title={post.title} />
+                <CardDescription description={post.paragraph1} />
               </CardContentLayout>
             </CardLayout>
           ))}

@@ -47,3 +47,10 @@ export const deletePost = async (postId: string): Promise<void> => {
     throw new Error("Failed to delete post");
   }
 };
+
+export const fetchPostById = async (id: string): Promise<Post> => {
+  const response = await fetch(`${BASE_URL}/${id}`);
+  if (!response.ok) throw new Error("Failed to fetch post");
+  const data = await response.json();
+  return data.data;
+};

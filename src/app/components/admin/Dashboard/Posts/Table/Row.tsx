@@ -15,7 +15,7 @@ const Row = ({ post, children }: RowProps) => {
           <div className="h-10 w-10 flex-shrink-0 relative">
             <Image
               className="rounded-full object-cover"
-              src={"/noticia1.jpg"}
+              src={post.image1 || "/noticia1.jpg"}
               alt={post.title || "Post cover"}
               fill
               sizes="(max-width: 40px) 100vw, 40px"

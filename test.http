@@ -18,7 +18,7 @@ GET {{baseUrl}}/admin/posts
 Authorization: Bearer {{adminToken}}
 
 ### Get Single Post
-GET {{baseUrl}}/admin/posts/2
+GET {{baseUrl}}/admin/posts/12
 Authorization: Bearer {{adminToken}}
 
 ### Create Post

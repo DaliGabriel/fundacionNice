@@ -1,54 +1,61 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { jwtVerify } from "jose";
+import { RouteService } from "./lib/services/route";
+import { TokenService } from "./lib/services/token";
+import { HEADERS, MESSAGES, ROUTES } from "./lib/constants/routes";
 
 export async function middleware(request: NextRequest) {
-  // Check if the request is for an admin route
-  if (request.nextUrl.pathname.startsWith("/admin")) {
-    const token = request.cookies.get("admin-token")?.value;
+  const { pathname } = request.nextUrl;
+  const method = request.method;
 
-    // If there's a token, verify it
-    if (token) {
-      try {
-        const secret = new TextEncoder().encode(
-          process.env.JWT_SECRET || "your-secret-key"
-        );
-        
-        await jwtVerify(token, secret);
+  // Check if it's a route we need to handle
+  if (
+    !RouteService.isAdminRoute(pathname) &&
+    !RouteService.isApiRoute(pathname)
+  ) {
+    return NextResponse.next();
+  }
 
-        // If authenticated and trying to access login page, redirect to dashboard
-        if (request.nextUrl.pathname === "/admin/login") {
-          return NextResponse.redirect(
-            new URL("/admin/dashboard", request.url)
-          );
-        }
+  // Check if it's a public route
+  if (RouteService.isPublicRoute(pathname, method)) {
+    return NextResponse.next();
+  }
 
-        // Allow access to other admin routes
-        return NextResponse.next();
-      } catch (error) {
-        console.error("Error verifying token:", error);
-        // If token is invalid, clear it and redirect to login
-        const response = NextResponse.redirect(
-          new URL("/admin/login", request.url)
-        );
-        response.cookies.delete("admin-token");
-        return response;
-      }
-    }
+  // Handle authentication for protected routes
+  const token = TokenService.extractToken(request);
 
-    // If no token, only allow access to login page and login API
-    if (
-      request.nextUrl.pathname === "/admin/login" ||
-      request.nextUrl.pathname === "/api/admin/login"
-    ) {
-      return NextResponse.next();
-    }
+  if (!token) {
+    return createUnauthorizedResponse(request);
+  }
 
-    // Redirect to login for all other admin routes
-    return NextResponse.redirect(new URL("/admin/login", request.url));
+  const isValid = await TokenService.verifyToken(token.value);
+  if (!isValid) {
+    return createInvalidTokenResponse(request);
   }
 
   return NextResponse.next();
+}
+
+function createUnauthorizedResponse(request: NextRequest): NextResponse {
+  if (RouteService.isApiRoute(request.nextUrl.pathname)) {
+    return new NextResponse(JSON.stringify(MESSAGES.UNAUTHORIZED), {
+      status: 401,
+      headers: HEADERS.JSON,
+    });
+  }
+  return NextResponse.redirect(new URL(ROUTES.ADMIN.LOGIN, request.url));
+}
+
+function createInvalidTokenResponse(request: NextRequest): NextResponse {
+  const response = RouteService.isApiRoute(request.nextUrl.pathname)
+    ? new NextResponse(JSON.stringify(MESSAGES.INVALID_TOKEN), {
+        status: 401,
+        headers: HEADERS.JSON,
+      })
+    : NextResponse.redirect(new URL(ROUTES.ADMIN.LOGIN, request.url));
+
+  response.cookies.delete("admin-token");
+  return response;
 }
 
 export const config = {

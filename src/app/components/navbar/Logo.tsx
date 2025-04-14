@@ -11,6 +11,7 @@ const Logo = () => {
             width={120}
             height={40}
             className="h-auto w-auto"
+            priority
           />
         </Link>
       </div>

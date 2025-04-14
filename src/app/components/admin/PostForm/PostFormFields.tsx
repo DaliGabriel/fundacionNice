@@ -3,13 +3,91 @@ import { PostFormFieldsProps } from "../../../../lib/types/postForm";
 import { FormInput } from "./FormInput";
 import { FormSelect } from "./FormSelect";
 import { FormCheckbox } from "./FormCheckbox";
+import { useState } from "react";
+import Image from "next/image";
 
 export const PostFormFields = ({
   formData,
   handleChange,
 }: PostFormFieldsProps) => {
+  const [uploading, setUploading] = useState<Record<string, boolean>>({});
+  const [uploadError, setUploadError] = useState<string | null>(null);
+
+  const handleImageUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    fieldId: string
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setUploading((prev) => ({ ...prev, [fieldId]: true }));
+      setUploadError(null);
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || "Upload failed");
+      }
+
+      // Update the form data with the new image URL
+      handleChange({
+        target: {
+          id: fieldId,
+          value: data.url,
+        },
+      } as React.ChangeEvent<HTMLInputElement>);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      setUploadError(error instanceof Error ? error.message : "Upload failed");
+    } finally {
+      setUploading((prev) => ({ ...prev, [fieldId]: false }));
+    }
+  };
+
+  const renderImageUploader = (fieldId: string, label: string) => (
+    <div>
+      <label className="block text-sm font-medium mb-1">{label}</label>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => handleImageUpload(e, fieldId)}
+        className="w-full px-3 py-2 border rounded-md"
+        disabled={uploading[fieldId]}
+      />
+      {uploading[fieldId] && (
+        <div className="mt-2 text-blue-600">Uploading...</div>
+      )}
+      {formData[fieldId as keyof typeof formData] && (
+        <div className="mt-2">
+          <Image
+            src={formData[fieldId as keyof typeof formData] as string}
+            alt={`${label} preview`}
+            className="max-h-32"
+            width={1000}
+            height={1000}
+          />
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <>
+      {uploadError && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+          {uploadError}
+        </div>
+      )}
+
       <FormInput
         label="Title"
         id="title"
@@ -18,13 +96,7 @@ export const PostFormFields = ({
         required
       />
 
-      <FormInput
-        label="Cover Image URL"
-        id="cover"
-        value={formData.cover}
-        onChange={handleChange}
-        required
-      />
+      {renderImageUploader("cover", "Cover Image")}
 
       <FormSelect
         label="Category"
@@ -48,19 +120,8 @@ export const PostFormFields = ({
         required
       />
 
-      <FormInput
-        label="First Image URL"
-        id="image1"
-        value={formData.image1}
-        onChange={handleChange}
-      />
-
-      <FormInput
-        label="Second Image URL"
-        id="image2"
-        value={formData.image2}
-        onChange={handleChange}
-      />
+      {renderImageUploader("image1", "First Image")}
+      {renderImageUploader("image2", "Second Image")}
 
       <FormInput
         label="Second Paragraph"
@@ -71,19 +132,8 @@ export const PostFormFields = ({
         rows={5}
       />
 
-      <FormInput
-        label="Third Image URL"
-        id="image3"
-        value={formData.image3}
-        onChange={handleChange}
-      />
-
-      <FormInput
-        label="Fourth Image URL"
-        id="image4"
-        value={formData.image4}
-        onChange={handleChange}
-      />
+      {renderImageUploader("image3", "Third Image")}
+      {renderImageUploader("image4", "Fourth Image")}
 
       <FormInput
         label="Button Link URL"

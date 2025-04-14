@@ -6,11 +6,13 @@ import {
   createPost as createPostService,
   updatePost as updatePostService,
   deletePost as deletePostService,
+  fetchPostById as fetchPostByIdService,
 } from "../services/client/posts";
 import { ContentState } from "../constants/dashboardState";
 
 export const usePosts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [currentPost, setCurrentPost] = useState<Post | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -70,6 +72,22 @@ export const usePosts = () => {
     [fetchPosts]
   );
 
+  const fetchPostById = useCallback(async (id: string) => {
+    try {
+      setIsLoading(true);
+      const data = await fetchPostByIdService(id);
+      setCurrentPost(data);
+      setError("");
+      return data;
+    } catch (err) {
+      setError("Failed to load post");
+      console.error(err);
+      return null;
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   const getContentState = useCallback((): ContentState => {
     if (isLoading) return ContentState.LOADING;
     if (error) return ContentState.ERROR;
@@ -79,9 +97,11 @@ export const usePosts = () => {
 
   return {
     posts,
+    currentPost,
     isLoading,
     error,
     fetchPosts,
+    fetchPostById,
     createPost,
     updatePost,
     deletePost,
