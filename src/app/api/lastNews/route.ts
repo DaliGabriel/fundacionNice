@@ -1,13 +1,9 @@
 import { NextResponse } from "next/server";
-import { getAllPosts } from "../../../lib/services/server/post";
+import { getLastThreePublishedPosts } from "../../../lib/services/server/post";
 
 export async function GET() {
   try {
-    const posts = await getAllPosts();
-    // Filter published posts and get last three
-    const publishedPosts = posts.filter((post) => post.published);
-    const lastThreePosts = publishedPosts.slice(-3);
-
+    const lastThreePosts = await getLastThreePublishedPosts();
     return NextResponse.json(lastThreePosts);
   } catch (error) {
     console.error(error);

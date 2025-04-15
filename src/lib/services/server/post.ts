@@ -6,6 +6,7 @@ import {
   remove,
   findById,
   findAll,
+  findLastThreePublished,
 } from "../../database/repositories/post";
 
 export const createPost = async (postData: PostFormData) => {
@@ -36,4 +37,8 @@ export const getPostById = async (id: string) => {
 
 export const getAllPosts = async () => {
   return await findAll();
+};
+
+export const getLastThreePublishedPosts = async () => {
+  return await findLastThreePublished();
 };
