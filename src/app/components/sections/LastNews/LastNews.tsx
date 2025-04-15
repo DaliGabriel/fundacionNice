@@ -10,9 +10,15 @@ import CardImage from "./Card/CardImage";
 import CardLayout from "./Card/CardLayout";
 import CardTitle from "./Card/CardTitle";
 
+// Prevent caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const LastNews = async () => {
   const posts = await getAllPosts();
-  const lastThreePosts = posts.slice(-3);
+  // Filter published posts and get last three
+  const publishedPosts = posts.filter((post) => post.published);
+  const lastThreePosts = publishedPosts.slice(-3);
 
   return (
     <section className="py-16 bg-gray-50">
