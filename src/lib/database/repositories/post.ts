@@ -46,7 +46,7 @@ export const remove = async (id: number) => {
 };
 
 export const findById = async (id: number) => {
-  return await prisma.post.findUnique({
+  return await prisma.post.findFirst({
     where: { id },
   });
 };
