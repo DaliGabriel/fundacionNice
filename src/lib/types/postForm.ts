@@ -18,6 +18,7 @@ export interface PostFormData {
 export interface PostFormProps {
   onSubmit: (data: PostFormData) => Promise<void>;
   initialData?: PostFormData;
+  onClose: () => void;
 }
 
 export interface Option {

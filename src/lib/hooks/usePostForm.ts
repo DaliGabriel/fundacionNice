@@ -2,7 +2,11 @@ import { useState } from "react";
 import { PostFormData, PostFormProps } from "../types/postForm";
 import { defaultFields } from "../constants/usePostForm";
 
-export const usePostForm = ({ onSubmit, initialData }: PostFormProps) => {
+export const usePostForm = ({
+  onSubmit,
+  initialData,
+  onClose,
+}: PostFormProps) => {
   const [formData, setFormData] = useState<PostFormData>(
     initialData || defaultFields
   );
@@ -44,11 +48,17 @@ export const usePostForm = ({ onSubmit, initialData }: PostFormProps) => {
     setFormData(defaultFields);
   };
 
+  const handleClose = () => {
+    onClose();
+    resetForm();
+  };
+
   return {
     formData,
     isLoading,
     error,
     handleSubmit,
     handleChange,
+    handleClose,
   };
 };

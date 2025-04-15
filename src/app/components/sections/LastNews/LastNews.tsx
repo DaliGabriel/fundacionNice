@@ -24,21 +24,23 @@ const LastNews = async () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-4">
           {lastThreePosts.map((post) => (
-            <CardLayout key={post.id}>
-              <CardImage image={post.cover} title={post.title} />
-              <CardContentLayout>
-                <CardCategory category={post.category} />
-                <CardDate
-                  date={new Date(post.createdAt).toLocaleDateString("es-ES", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                />
-                <CardTitle title={post.title} />
-                <CardDescription description={post.paragraph1} />
-              </CardContentLayout>
-            </CardLayout>
+            <Link href={`/blog/${post.id}`} key={post.id}>
+              <CardLayout>
+                <CardImage image={post.cover} title={post.title} />
+                <CardContentLayout>
+                  <CardCategory category={post.category} />
+                  <CardDate
+                    date={new Date(post.createdAt).toLocaleDateString("es-ES", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  />
+                  <CardTitle title={post.title} />
+                  <CardDescription description={post.paragraph1} />
+                </CardContentLayout>
+              </CardLayout>
+            </Link>
           ))}
         </div>
 

@@ -18,7 +18,11 @@ export const PostModal = ({
         </Modal.Title>
         <Modal.CloseButton onClose={onClose} />
       </Modal.Header>
-      <PostForm onSubmit={onSubmit} initialData={editingPost || undefined} />
+      <PostForm
+        onSubmit={onSubmit}
+        initialData={editingPost || undefined}
+        onClose={onClose}
+      />
     </Modal.Layout>
   );
 };

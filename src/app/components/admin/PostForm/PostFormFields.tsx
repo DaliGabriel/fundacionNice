@@ -71,7 +71,7 @@ export const PostFormFields = ({
           <Image
             src={formData[fieldId as keyof typeof formData] as string}
             alt={`${label} preview`}
-            className="max-h-32"
+            className="w-full h-full object-cover"
             width={1000}
             height={1000}
           />
