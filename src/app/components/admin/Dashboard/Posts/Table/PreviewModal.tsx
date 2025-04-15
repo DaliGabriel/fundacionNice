@@ -47,9 +47,6 @@ const PreviewModal = ({ post, onClose, isOpen }: PreviewModalProps) => {
         {/* Footer */}
         <div className="p-4 border-t">
           <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-500">
-              Viewing: {window.location.origin}/blog/{post.id}
-            </span>
             <button
               onClick={onClose}
               className="bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors"
