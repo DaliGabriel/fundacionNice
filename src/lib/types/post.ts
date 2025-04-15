@@ -36,3 +36,11 @@ export type EditingPost = PostFormData & {
   createdAt: string;
   updatedAt: string;
 };
+
+export interface PostCardProps {
+  post: Post;
+}
+
+export interface LoadingStateProps {
+  title: string;
+}

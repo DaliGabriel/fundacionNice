@@ -53,6 +53,9 @@ export const findById = async (id: number) => {
 
 export const findAll = async () => {
   return await prisma.post.findMany({
+    where: {
+      published: true,
+    },
     orderBy: {
       createdAt: "desc",
     },
