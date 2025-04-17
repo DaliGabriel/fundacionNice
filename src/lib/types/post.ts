@@ -44,3 +44,24 @@ export interface PostCardProps {
 export interface LoadingStateProps {
   title: string;
 }
+
+export interface PreviewModalProps {
+  post: Post;
+  onClose: () => void;
+  isOpen: boolean;
+}
+
+export interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export interface EditButtonProps {
+  post: Post;
+  onEdit: (post: Post) => void;
+}
+
+export interface DeleteButtonProps {
+  post: Post;
+  onDelete: (post: Post) => void;
+}
+

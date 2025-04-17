@@ -1,9 +1,4 @@
-import { ReactNode } from "react";
-
-interface FormProps {
-  children: ReactNode;
-  onSubmit: (e: React.FormEvent) => Promise<void>;
-}
+import { FormProps } from "../../../../lib/types/loginForm";
 
 export const Form = ({ children, onSubmit }: FormProps) => {
   return (

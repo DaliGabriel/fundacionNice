@@ -1,9 +1,4 @@
-import { Post } from "../../../../../../lib/types/post";
-
-interface DeleteButtonProps {
-  post: Post;
-  onDelete: (post: Post) => void;
-}
+import { DeleteButtonProps } from "../../../../../../lib/types/post";
 
 const DeleteButton = ({ post, onDelete }: DeleteButtonProps) => {
   return (

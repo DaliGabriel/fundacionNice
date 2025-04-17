@@ -47,3 +47,6 @@ export const categories = [
     value: "FUNDACION_1111",
   },
 ];
+
+export const DEFAULT_POSTS_PER_PAGE = 3;
+ 

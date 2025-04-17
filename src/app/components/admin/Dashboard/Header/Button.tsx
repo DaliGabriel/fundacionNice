@@ -1,6 +1,4 @@
-interface ButtonProps {
-  setIsModalOpen: (isModalOpen: boolean) => void;
-}
+import { ButtonProps } from "../../../../../lib/types/dashboard";
 
 const Button = ({ setIsModalOpen }: ButtonProps) => {
   return (

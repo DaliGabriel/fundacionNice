@@ -1,8 +1,4 @@
-import { ReactNode } from "react";
-
-interface HeaderProps {
-  children: ReactNode;
-}
+import { HeaderProps } from "../../../../lib/types/loginForm";
 
 export const Header = ({ children }: HeaderProps) => {
   return (

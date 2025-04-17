@@ -5,3 +5,8 @@ export interface TableProps {
   onEdit: (post: Post) => void;
   onDelete: (post: Post) => void;
 }
+
+export interface RowProps {
+  post: Post;
+  children?: React.ReactNode;
+}

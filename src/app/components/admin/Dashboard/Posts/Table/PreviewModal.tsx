@@ -1,10 +1,4 @@
-import { Post } from "../../../../../../lib/types/post";
-
-interface PreviewModalProps {
-  post: Post;
-  onClose: () => void;
-  isOpen: boolean;
-}
+import { PreviewModalProps } from "../../../../../../lib/types/post";
 
 const PreviewModal = ({ post, onClose, isOpen }: PreviewModalProps) => {
   if (!isOpen) return null;

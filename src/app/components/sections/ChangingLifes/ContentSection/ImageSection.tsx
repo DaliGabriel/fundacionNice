@@ -5,7 +5,7 @@ const ImageSection = () => {
     <>
       <div className="relative h-[300px] md:h-[400px] w-full">
         <Image
-          src="/changingLifePhoto.jpg"
+          src="/sections/cambiandoVidas.jpg"
           alt="Changing lives at Fundación Nice"
           fill
           className="object-cover"

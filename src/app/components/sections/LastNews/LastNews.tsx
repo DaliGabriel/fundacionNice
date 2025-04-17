@@ -1,13 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import {
-  LoadingStateProps,
-  Post,
-  PostCardProps,
-} from "../../../../lib/types/post";
+import useLastNews from "../../../../lib/hooks/useLastNews";
+import { PostCardProps } from "../../../../lib/types/post";
 import Button from "../../common/Buttton";
+import { LoadingSpinner } from "../../common/LoadingSpinner";
 import Title from "../../common/Title";
 import CardCategory from "./Card/CardCategory";
 import CardContentLayout from "./Card/CardContentLayout";
@@ -16,19 +13,6 @@ import CardDescription from "./Card/CardDescription";
 import CardImage from "./Card/CardImage";
 import CardLayout from "./Card/CardLayout";
 import CardTitle from "./Card/CardTitle";
-
-// Components
-const LoadingState = ({ title }: LoadingStateProps) => (
-  <section className="py-16 bg-gray-50">
-    <div className="container mx-auto">
-      <Title
-        title={title}
-        className="text-3xl md:text-4xl text-[#002E6D] mb-12"
-      />
-      <div className="text-center">Cargando...</div>
-    </div>
-  </section>
-);
 
 const PostCard = ({ post }: PostCardProps) => (
   <Link href={`/blog/${post.id}`}>
@@ -50,36 +34,12 @@ const PostCard = ({ post }: PostCardProps) => (
   </Link>
 );
 
-// Custom hook for data fetching
-const useLastNews = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch("/api/lastNews");
-        const data = await response.json();
-        setPosts(data);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
-  return { posts, loading };
-};
-
 // Main component
 const LastNews = () => {
   const { posts, loading } = useLastNews();
 
   if (loading) {
-    return <LoadingState title="Últimas noticias" />;
+    return <LoadingSpinner />;
   }
 
   return (

@@ -1,9 +1,7 @@
 import Image from "next/image";
+import { BlogCoverProps } from "../../../lib/types/blog";
 
-interface BlogCoverProps {
-  coverUrl: string;
-  title: string;
-}
+
 
 export const BlogCover = ({ coverUrl, title }: BlogCoverProps) => {
   if (!coverUrl) return null;

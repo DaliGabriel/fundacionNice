@@ -1,6 +1,4 @@
-interface LayoutProps {
-  children: React.ReactNode;
-}
+import { LayoutProps } from "../../../../../../lib/types/post";
 
 const Layout = ({ children }: LayoutProps) => {
   return (

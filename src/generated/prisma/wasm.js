@@ -142,6 +142,17 @@ exports.Prisma.AdminScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.MessageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  subject: 'subject',
+  message: 'message',
+  read: 'read',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -166,7 +177,8 @@ exports.Category = exports.$Enums.Category = {
 
 exports.Prisma.ModelName = {
   Post: 'Post',
-  Admin: 'Admin'
+  Admin: 'Admin',
+  Message: 'Message'
 };
 
 /**

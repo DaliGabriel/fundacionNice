@@ -1,7 +1,4 @@
-interface ContentProps {
-  title: string;
-  message: string;
-}
+import { ContentProps } from "../../../../lib/types/alert";
 
 export const Content = ({ title, message }: ContentProps) => {
   return (

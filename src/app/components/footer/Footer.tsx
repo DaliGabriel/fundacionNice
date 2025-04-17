@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-4">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             <Logo
-              src="/logoFundacionNiceBlanco-removebg-preview.png"
+              src="/logos/FundacionNiceBlanco.png"
               alt="Fundación NICE"
               width={150}
               height={150}

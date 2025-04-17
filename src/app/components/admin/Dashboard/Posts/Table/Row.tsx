@@ -1,13 +1,8 @@
 import { format } from "date-fns";
 import Image from "next/image";
-import { Post } from "../../../../../../lib/types/post";
 import { useState } from "react";
+import { RowProps } from "../../../../../../lib/types/table";
 import PreviewModal from "./PreviewModal";
-
-interface RowProps {
-  post: Post;
-  children?: React.ReactNode;
-}
 
 const Row = ({ post, children }: RowProps) => {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -20,7 +15,7 @@ const Row = ({ post, children }: RowProps) => {
             <div className="h-10 w-10 flex-shrink-0 relative">
               <Image
                 className="rounded-full object-cover"
-                src={post.image1 || "/noticia1.jpg"}
+                src={post.cover || "/noticia1.jpg"}
                 alt={post.title || "Post cover"}
                 fill
                 sizes="(max-width: 40px) 100vw, 40px"

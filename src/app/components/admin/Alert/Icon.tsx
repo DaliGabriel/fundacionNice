@@ -1,9 +1,5 @@
-import { AlertType } from "../../../../lib/types/alert";
 import { useAlert } from "../../../../lib/hooks/useAlert";
-
-interface IconProps {
-  type: AlertType;
-}
+import { IconProps } from "../../../../lib/types/alert";
 
 export const Icon = ({ type }: IconProps) => {
   const { getIcon, getColorClass } = useAlert();

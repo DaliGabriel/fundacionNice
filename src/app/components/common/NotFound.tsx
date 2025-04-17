@@ -1,7 +1,4 @@
-interface NotFoundProps {
-  message?: string;
-  className?: string;
-}
+import { NotFoundProps } from "../../../lib/types/common";
 
 export const NotFound = ({
   message = "Not found",

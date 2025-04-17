@@ -1,9 +1,4 @@
-import { Post } from "../../../../../../lib/types/post";
-
-interface EditButtonProps {
-  post: Post;
-  onEdit: (post: Post) => void;
-}
+import { EditButtonProps } from "../../../../../../lib/types/post";
 
 const EditButton = ({ post, onEdit }: EditButtonProps) => {
   return (

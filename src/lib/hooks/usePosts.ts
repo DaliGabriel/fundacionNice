@@ -1,3 +1,10 @@
+/**
+ * Custom hook for managing blog posts.
+ * Provides CRUD operations and state management for blog posts.
+ *
+ * @module usePosts
+ */
+
 import { useState, useCallback } from "react";
 import { Post } from "../types/post";
 import { PostFormData } from "../types/postForm";
@@ -10,6 +17,37 @@ import {
 } from "../services/client/posts";
 import { ContentState } from "../constants/dashboardState";
 
+/**
+ * Hook for managing blog posts
+ *
+ * @returns {Object} Post management utilities
+ * @returns {Post[]} posts - Array of all posts
+ * @returns {Post | null} currentPost - Currently selected post
+ * @returns {boolean} isLoading - Loading state during operations
+ * @returns {string} error - Error message if operation fails
+ * @returns {Function} fetchPosts - Function to fetch all posts
+ * @returns {Function} fetchPostById - Function to fetch a specific post
+ * @returns {Function} createPost - Function to create a new post
+ * @returns {Function} updatePost - Function to update an existing post
+ * @returns {Function} deletePost - Function to delete a post
+ * @returns {Function} getContentState - Function to get the current content state
+ *
+ * @example
+ * const { posts, isLoading, fetchPosts } = usePosts();
+ *
+ * // Fetch all posts
+ * useEffect(() => {
+ *   fetchPosts();
+ * }, []);
+ *
+ * // Create a new post
+ * const handleCreate = async (formData) => {
+ *   const success = await createPost(formData);
+ *   if (success) {
+ *     // Handle success
+ *   }
+ * };
+ */
 export const usePosts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [currentPost, setCurrentPost] = useState<Post | null>(null);

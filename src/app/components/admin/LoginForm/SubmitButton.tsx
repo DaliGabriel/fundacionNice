@@ -1,6 +1,4 @@
-interface SubmitButtonProps {
-  isLoading?: boolean;
-}
+import { SubmitButtonProps } from "../../../../lib/types/loginForm";
 
 export const SubmitButton = ({ isLoading }: SubmitButtonProps) => {
   return (

@@ -1,6 +1,4 @@
-interface CardDescriptionProps {
-  description: string;
-}
+import { CardDescriptionProps } from "../../../../../lib/types/card";
 
 const CardDescription = ({ description }: CardDescriptionProps) => {
   return (

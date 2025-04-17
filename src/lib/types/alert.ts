@@ -16,3 +16,18 @@ export interface AlertProps {
   onClose: () => void;
   onConfirm?: () => void;
 }
+
+export interface IconProps {
+  type: AlertType;
+}
+
+export interface ContentProps {
+  title: string;
+  message: string;
+}
+
+export interface ActionsProps {
+  type: AlertType;
+  onClose: () => void;
+  onConfirm?: () => void;
+}

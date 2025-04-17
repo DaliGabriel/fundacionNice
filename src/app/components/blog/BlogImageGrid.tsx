@@ -1,9 +1,7 @@
 import Image from "next/image";
+import { BlogImageGridProps } from "../../../lib/types/blog";
 
-interface BlogImageGridProps {
-  images: (string | undefined | null)[];
-  startIndex: number;
-}
+
 
 export const BlogImageGrid = ({ images, startIndex }: BlogImageGridProps) => {
   const validImages = images.filter((img): img is string => !!img);

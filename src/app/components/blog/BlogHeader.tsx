@@ -1,9 +1,7 @@
 import { formatDateES } from "@/lib/utils/dateFormat";
+import { BlogHeaderProps } from "../../../lib/types/blog";
 
-interface BlogHeaderProps {
-  title: string;
-  date: string;
-}
+
 
 export const BlogHeader = ({ title, date }: BlogHeaderProps) => {
   return (

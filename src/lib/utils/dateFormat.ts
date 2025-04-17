@@ -1,3 +1,14 @@
+/**
+ * Utility functions for formatting dates in different formats.
+ * Provides both Spanish-specific and customizable date formatting options.
+ *
+ * @module DateFormat
+ */
+
+/**
+ * Array of month names in Spanish.
+ * Used for Spanish-specific date formatting.
+ */
 const MONTHS_ES = [
   "Enero",
   "Febrero",
@@ -15,8 +26,14 @@ const MONTHS_ES = [
 
 /**
  * Formats a date string to Spanish format: "DD de Month YYYY"
- * @param dateString - The date string to format
- * @returns Formatted date string in Spanish
+ *
+ * @param {string} dateString - The date string to format
+ * @returns {string} Formatted date string in Spanish format
+ *
+ * @example
+ * formatDateES("2023-04-15") // Returns "15 de Abril 2023"
+ *
+ * @throws {Error} If the input date string is invalid
  */
 export const formatDateES = (dateString: string): string => {
   const date = new Date(dateString);
@@ -29,11 +46,28 @@ export const formatDateES = (dateString: string): string => {
 };
 
 /**
- * Formats a date string to a custom format
- * @param dateString - The date string to format
- * @param locale - The locale to use for formatting (defaults to 'es')
- * @param options - DateTimeFormatOptions for custom formatting
- * @returns Formatted date string
+ * Formats a date string using the Intl.DateTimeFormat API.
+ * Provides flexible date formatting with locale support.
+ *
+ * @param {string} dateString - The date string to format
+ * @param {string} [locale="es"] - The locale to use for formatting
+ * @param {Intl.DateTimeFormatOptions} [options] - Custom formatting options
+ * @returns {string} Formatted date string according to the specified options
+ *
+ * @example
+ * // Basic usage
+ * formatDate("2023-04-15") // Returns "15/4/2023" (Spanish format)
+ *
+ * @example
+ * // With custom options
+ * formatDate("2023-04-15", "en-US", {
+ *   weekday: 'long',
+ *   year: 'numeric',
+ *   month: 'long',
+ *   day: 'numeric'
+ * }) // Returns "Saturday, April 15, 2023"
+ *
+ * @throws {Error} If the input date string is invalid
  */
 export const formatDate = (
   dateString: string,

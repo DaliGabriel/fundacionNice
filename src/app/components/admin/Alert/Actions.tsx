@@ -1,10 +1,4 @@
-import { AlertType } from "../../../../lib/types/alert";
-
-interface ActionsProps {
-  type: AlertType;
-  onClose: () => void;
-  onConfirm?: () => void;
-}
+import { ActionsProps } from "../../../../lib/types/alert";
 
 export const Actions = ({ type, onClose, onConfirm }: ActionsProps) => {
   return (

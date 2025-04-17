@@ -1,7 +1,4 @@
-interface LoadingSpinnerProps {
-  size?: "sm" | "md" | "lg";
-  color?: string;
-}
+import { LoadingSpinnerProps } from "../../../lib/types/common";
 
 export const LoadingSpinner = ({
   size = "md",

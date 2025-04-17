@@ -26,3 +26,18 @@ export interface BlogContentProps {
   images2: [string | undefined | null, string | undefined | null];
   buttonLink?: string;
 }
+
+export interface BlogImageGridProps {
+  images: (string | undefined | null)[];
+  startIndex: number;
+}
+
+export interface BlogHeaderProps {
+  title: string;
+  date: string;
+}
+
+export interface BlogCoverProps {
+  coverUrl: string;
+  title: string;
+}

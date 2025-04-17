@@ -6,7 +6,7 @@ const Logo = () => {
       <div className="flex-shrink-0">
         <Link href="/">
           <Image
-            src="/fundacionNiceLogoN.png"
+            src="/logos/fundacionNice.png"
             alt="Fundación NICE Logo"
             width={120}
             height={40}

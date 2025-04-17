@@ -35,8 +35,8 @@ export const getPostById = async (id: string) => {
   return await findById(parseInt(id));
 };
 
-export const getAllPosts = async () => {
-  return await findAll();
+export const getAllPosts = async (filter: string | null = null) => {
+  return await findAll(filter);
 };
 
 export const getLastThreePublishedPosts = async () => {

@@ -1,7 +1,22 @@
+/**
+ * Repository for managing blog posts in the application.
+ * Provides CRUD operations and specialized queries for posts.
+ *
+ * @module PostRepository
+ */
+
 import prisma from "../../db";
 import { PostFormData } from "../../types/postForm";
 import { Category } from "../../../generated/prisma";
 
+/**
+ * Creates a new blog post in the database.
+ *
+ * @param {PostFormData} postData - The data for the new post
+ * @returns {Promise<Post>} The created post
+ *
+ * @throws {PrismaError} If the post creation fails
+ */
 export const create = async (postData: PostFormData) => {
   return await prisma.post.create({
     data: {
@@ -20,6 +35,15 @@ export const create = async (postData: PostFormData) => {
   });
 };
 
+/**
+ * Updates an existing blog post in the database.
+ *
+ * @param {number} id - The ID of the post to update
+ * @param {PostFormData} postData - The updated post data
+ * @returns {Promise<Post>} The updated post
+ *
+ * @throws {PrismaError} If the post update fails
+ */
 export const update = async (id: number, postData: PostFormData) => {
   return await prisma.post.update({
     where: { id },
@@ -39,26 +63,75 @@ export const update = async (id: number, postData: PostFormData) => {
   });
 };
 
+/**
+ * Deletes a blog post from the database.
+ *
+ * @param {number} id - The ID of the post to delete
+ * @returns {Promise<Post>} The deleted post
+ *
+ * @throws {PrismaError} If the post deletion fails
+ */
 export const remove = async (id: number) => {
   return await prisma.post.delete({
     where: { id },
   });
 };
 
+/**
+ * Finds a blog post by its ID.
+ *
+ * @param {number} id - The ID of the post to find
+ * @returns {Promise<Post | null>} The found post or null if not found
+ */
 export const findById = async (id: number) => {
   return await prisma.post.findFirst({
     where: { id },
   });
 };
 
-export const findAll = async () => {
+/**
+ * Retrieves blog posts from the database with optional filtering.
+ *
+ * @param {string | null} filter - Optional filter parameter to filter posts by category
+ * @returns {Promise<Post[]>} Array of posts, filtered if a filter is provided
+ */
+export const findAll = async (filter: string | null = null) => {
+  const whereClause = filter
+    ? {
+        category: {
+          equals: (() => {
+            switch (filter.toLowerCase()) {
+              case "villa":
+                return Category.VILLA_DE_LOS_NINOS;
+              case "scholas":
+                return Category.SCHOLAS_OCURRENTES;
+              case "ludica":
+                return Category.LUDICA;
+              case "teleton":
+                return Category.FUNDACION_TELETON;
+              case "1111":
+                return Category.FUNDACION_1111;
+              default:
+                return undefined;
+            }
+          })(),
+        },
+      }
+    : {};
+
   return await prisma.post.findMany({
+    where: whereClause,
     orderBy: {
       createdAt: "desc",
     },
   });
 };
 
+/**
+ * Retrieves the three most recently published blog posts.
+ *
+ * @returns {Promise<Post[]>} Array of the three most recent published posts
+ */
 export const findLastThreePublished = async () => {
   return await prisma.post.findMany({
     where: {
@@ -68,5 +141,43 @@ export const findLastThreePublished = async () => {
       createdAt: "desc",
     },
     take: 3,
+  });
+};
+
+/**
+ * Retrieves blog posts from the database with optional filtering.
+ *
+ * @param {string | null} filter - Optional filter parameter to filter posts by category
+ * @returns {Promise<Post[]>} Array of filtered posts
+ */
+export const findFilteredPosts = async (filter: string | null = null) => {
+  const whereClause = filter
+    ? {
+        category: {
+          equals: (() => {
+            switch (filter.toLowerCase()) {
+              case "villa":
+                return Category.VILLA_DE_LOS_NINOS;
+              case "scholas":
+                return Category.SCHOLAS_OCURRENTES;
+              case "ludica":
+                return Category.LUDICA;
+              case "teleton":
+                return Category.FUNDACION_TELETON;
+              case "1111":
+                return Category.FUNDACION_1111;
+              default:
+                return undefined;
+            }
+          })(),
+        },
+      }
+    : {};
+
+  return await prisma.post.findMany({
+    where: whereClause,
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 };

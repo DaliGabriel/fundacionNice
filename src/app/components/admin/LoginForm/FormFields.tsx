@@ -1,9 +1,4 @@
-interface FormFieldsProps {
-  username: string;
-  password: string;
-  onUsernameChange: (value: string) => void;
-  onPasswordChange: (value: string) => void;
-}
+import { FormFieldsProps } from "../../../../lib/types/loginForm";
 
 export const FormFields = ({
   username,

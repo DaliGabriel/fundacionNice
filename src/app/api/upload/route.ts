@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import createGitHubUploader from "@/lib/utils/githubImageUpload";
+import createGitHubUploader from "../../../lib/utils/githubImageUpload";
+import { githubConfig } from "../../../lib/constants/githubImageUpload";
 
-const githubConfig = {
-  owner: process.env.NEXT_PUBLIC_GITHUB_OWNER || "",
-  repo: process.env.NEXT_PUBLIC_GITHUB_REPO || "",
-  token: process.env.NEXT_PUBLIC_GITHUB_TOKEN || "",
-};
+
 
 // Initialize the uploader once
 const uploader = createGitHubUploader(githubConfig);

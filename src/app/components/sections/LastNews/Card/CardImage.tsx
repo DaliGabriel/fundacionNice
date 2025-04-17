@@ -1,9 +1,7 @@
 import Image from "next/image";
+import { CardImageProps } from "../../../../../lib/types/card";
 
-interface CardImageProps {
-  image: string;
-  title: string;
-}
+
 
 const CardImage = ({ image, title }: CardImageProps) => {
   return (

@@ -1,6 +1,4 @@
-interface ErrorMessageProps {
-  message: string;
-}
+import { ErrorMessageProps } from "../../../../lib/types/loginForm";
 
 export const ErrorMessage = ({ message }: ErrorMessageProps) => {
   if (!message) return null;
