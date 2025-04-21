@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1919.21 675.39">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #f8ad00;
+      }
+
+      .cls-2 {
+        stroke: #002b5c;
+        stroke-dasharray: .03 8.53;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3.97px;
+      }
+
+      .cls-4 {
+        fill: #92c0e9;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="cls-1" d="M1919.21,675.39s-460.18-56.47-960-56.47C543.72,618.92,0,675.39,0,675.39V0s513.44,48.94,958.24,48.94S1919.21,0,1919.21,0v675.39Z"/>
+    </clipPath>
+  </defs>
+  <g id="Principal_Screen" data-name="Principal Screen">
+    <g class="cls-5">
+      <rect class="cls-3" x="958.8" y="-40.48" width="1184.74" height="752.44"/>
+      <circle class="cls-2" cx="1823.01" cy="702.73" r="196.2" transform="translate(37.04 1494.88) rotate(-45)"/>
+      <ellipse class="cls-3" cx="1008.67" cy="315.11" rx="172.81" ry="351.25"/>
+      <circle class="cls-4" cx="861.66" cy="60.69" r="133.96"/>
+    </g>
+  </g>
+</svg>

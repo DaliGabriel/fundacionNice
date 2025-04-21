@@ -4,7 +4,7 @@ import StatCard from "./StatCard";
 
 const OurNumbers = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-[#f2f2f2]">
       <div className="container mx-auto">
         <Title
           title="En cifras"

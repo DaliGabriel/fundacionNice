@@ -1,6 +1,7 @@
 export interface Alliance {
   name: string;
   logo: string;
+  logoWithColor: string;
 }
 
 export interface AllianceSectionProps {

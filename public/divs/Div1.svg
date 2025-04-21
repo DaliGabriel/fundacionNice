@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 308.83">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #92c0e9;
+        stroke-dasharray: .03 8.48;
+        stroke-width: 5.67px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-4 {
+        fill: #f8ad00;
+      }
+
+      .cls-5 {
+        fill: #92c0e9;
+      }
+
+      .cls-6 {
+        fill: #002b5c;
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-3 {
+        stroke: #f8ad00;
+        stroke-width: 1.7px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="1920" height="308.83"/>
+    </clipPath>
+  </defs>
+  <g id="Principal_Screen" data-name="Principal Screen">
+    <g class="cls-7">
+      <rect class="cls-6" width="1920" height="332.55"/>
+      <circle class="cls-5" cx="1829.26" cy="41.91" r="119.87"/>
+      <circle class="cls-3" cx="1818.56" cy="254.11" r="195.57"/>
+      <path class="cls-4" d="M-59.93,137.15c17.43-21.12,49.78-27.51,73.67-14.55,30.12,16.35,41.64,55.45,69.35,75.77,23.95,17.56,56.07,18.19,85.15,13.25,29.08-4.94,57.53-14.72,87.01-15.56,29.47-.84,61.74,9.57,76.85,35.43,8.36,14.32,10.45,31.54,10.63,48.21.13,12.09-.82,24.74-7.01,35.04-4.71,7.85-12.04,13.61-19.21,19.2-25.42,19.81-51.64,40.02-82.38,49.01-27.87,8.15-57.51,6.46-86.39,3.85-44.08-3.97-87.97-9.91-131.64-17.2-28.08-4.69-56.54-10.09-81.91-23.25-40.99-21.26-71.73-65.01-71.93-111.98s34.15-93.5,79.63-100.43"/>
+      <circle class="cls-2" cx="66.53" cy="73.23" r="174.67"/>
+    </g>
+  </g>
+</svg>

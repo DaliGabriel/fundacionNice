@@ -1,10 +1,15 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { alliances } from "../../../../lib/constants/alliances";
 import Title from "../../common/Title";
 
 const OurAlliances = () => {
+  const [hoveredAlliance, setHoveredAlliance] = useState<string | null>(null);
+
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-[#f2f2f2]">
       <div className="container mx-auto px-4">
         <Title
           title="Nuestras Alianzas"
@@ -15,9 +20,15 @@ const OurAlliances = () => {
             <div
               key={alliance.name}
               className="w-40 md:w-52 h-24 relative grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+              onMouseEnter={() => setHoveredAlliance(alliance.name)}
+              onMouseLeave={() => setHoveredAlliance(null)}
             >
               <Image
-                src={alliance.logo}
+                src={
+                  hoveredAlliance === alliance.name
+                    ? alliance.logoWithColor
+                    : alliance.logo
+                }
                 alt={`${alliance.name} logo`}
                 fill
                 style={{ objectFit: "contain" }}

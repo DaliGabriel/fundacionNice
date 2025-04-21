@@ -1,17 +1,11 @@
 import Content from "./Content";
-import LeftDecoration from "./shapes/left/LeftDecoration";
-import RightDecoration from "./shapes/rigth/RightDecoration";
+import Background from "./Background";
 
 const MissionStatement = () => {
   return (
-    <section className="relative bg-[#0A2355] overflow-hidden py-12">
-      <div className="hidden md:block">
-        <LeftDecoration />
-      </div>
+    <section className="relative overflow-hidden py-12">
+      <Background />
       <Content />
-      <div className="hidden md:block">
-        <RightDecoration />
-      </div>
     </section>
   );
 };
