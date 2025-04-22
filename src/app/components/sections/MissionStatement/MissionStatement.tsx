@@ -1,10 +1,10 @@
 import Content from "./Content";
-import Background from "./Background";
+import BackgroundPattern from "../../common/BackgroundPattern";
 
 const MissionStatement = () => {
   return (
     <section className="relative overflow-hidden py-12">
-      <Background />
+      <BackgroundPattern pattern="/divs/Div1.svg" />
       <Content />
     </section>
   );

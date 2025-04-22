@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Background from "./Background";
-import WaveTop from "./WaveTop";
-import WaveBottom from "./WaveBottom";
+import BackgroundPattern from "../../common/BackgroundPattern";
 import Button from "../../common/Buttton";
+import WaveBottom from "./WaveBottom";
+import WaveTop from "./WaveTop";
 
 const ChangingLifes = () => {
   return (
@@ -18,7 +18,7 @@ const ChangingLifes = () => {
       </div>
       <WaveTop />
       <div className="py-32">
-        <Background />
+        <BackgroundPattern pattern="/divs/Div2.svg" />
         <div className="container mx-auto relative z-10">
           <div className="grid md:grid-cols-2 items-center text-center">
             <div />

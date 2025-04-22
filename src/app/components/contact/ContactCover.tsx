@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BackgroundPattern from "../common/BackgroundPattern";
 
 const ContactCover = () => {
   return (
@@ -13,7 +14,11 @@ const ContactCover = () => {
       />
       <div className="absolute inset-0 bg-black/50" />
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
+      <div className="absolute inset-0 z-10">
+        <BackgroundPattern pattern="/divs/Headers.svg" />
+      </div>
+
+      <div className="absolute inset-0 z-20 flex items-center justify-center">
         <h1 className="text-white text-6xl font-bold text-center max-w-4xl px-4">
           Contacto
         </h1>

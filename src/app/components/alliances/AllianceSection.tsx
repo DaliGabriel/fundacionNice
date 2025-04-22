@@ -53,7 +53,7 @@ export const AllianceSection = ({
           src={logo}
           alt={`${title} logo`}
           fill
-          className="object-contain"
+          className="object-contain filter brightness-0 invert"
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />

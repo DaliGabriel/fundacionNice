@@ -1,9 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import { StatCardProps } from "../../../../lib/types/ourNumbers";
+import { useAnimateNumber } from "../../../../lib/utils/animateNumber";
+import { useIntersectionObserver } from "../../../../lib/hooks/useIntersectionObserver";
 
 const StatCard = ({ icon, number, description }: StatCardProps) => {
+  const { isVisible, elementRef } = useIntersectionObserver();
+  const animatedNumber = useAnimateNumber(isVisible ? number.toString() : "0");
+
   return (
-    <div className="flex flex-col items-center text-center">
+    <div ref={elementRef} className="flex flex-col items-center text-center">
       <div className="w-40 h-40 mb-4">
         <Image
           src={icon}
@@ -13,8 +20,10 @@ const StatCard = ({ icon, number, description }: StatCardProps) => {
           className="w-full h-full object-contain"
         />
       </div>
-      <h3 className="text-5xl font-bold text-[#FDB913] mb-2">{number}</h3>
-      <p className="text-[#002E6D] font-bold uppercase text-md max-w-[200px] leading-tight ">
+      <h3 className="text-5xl font-bold text-[#FDB913] mb-2">
+        {animatedNumber}
+      </h3>
+      <p className="text-[#002E6D] font-bold uppercase text-md max-w-[200px] leading-tight">
         {description}
       </p>
     </div>

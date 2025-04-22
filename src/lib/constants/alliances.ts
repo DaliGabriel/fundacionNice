@@ -28,6 +28,7 @@ export const alliances: readonly Alliance[] = [
   },
 ];
 
+
 export const alliancesSection = [
   {
     title: "La Villa de los Niños",
