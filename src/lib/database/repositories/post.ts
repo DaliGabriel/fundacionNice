@@ -122,7 +122,7 @@ export const findAll = async (filter: string | null = null) => {
   return await prisma.post.findMany({
     where: whereClause,
     orderBy: {
-      createdAt: "desc",
+      updatedAt: "desc",
     },
   });
 };
@@ -138,7 +138,7 @@ export const findLastThreePublished = async () => {
       published: true,
     },
     orderBy: {
-      createdAt: "desc",
+      updatedAt: "desc",
     },
     take: 3,
   });
@@ -177,7 +177,7 @@ export const findFilteredPosts = async (filter: string | null = null) => {
   return await prisma.post.findMany({
     where: whereClause,
     orderBy: {
-      createdAt: "desc",
+      updatedAt: "desc",
     },
   });
 };

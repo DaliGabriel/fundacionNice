@@ -21,7 +21,7 @@ const PostCard = ({ post }: PostCardProps) => (
       <CardContentLayout>
         <CardCategory category={post.category} />
         <CardDate
-          date={new Date(post.createdAt).toLocaleDateString("es-ES", {
+          date={new Date(post.updatedAt).toLocaleDateString("es-ES", {
             day: "numeric",
             month: "long",
             year: "numeric",
