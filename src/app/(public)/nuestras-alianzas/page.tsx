@@ -5,7 +5,11 @@ import AllianceText from "../../components/alliances/AllianceText";
 const NuestrasAlianzas = () => {
   return (
     <main className="min-h-screen">
-      <Hero title="Nuestras Alianzas" image="/heros/nuestrasalianzas.jpg" />
+      <Hero
+        title="Nuestras Alianzas"
+        image="/heros/nuestrasalianzas.jpg"
+        mobileImage="/heros/nuestrasalianzasMobile.jpg"
+      />
       <div className="max-w-7xl mx-auto">
         <AllianceText />
         <div className="flex flex-col divide-y">

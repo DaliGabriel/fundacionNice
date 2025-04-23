@@ -37,7 +37,7 @@ const Pagination = ({
       <button
         onClick={handlePreviousPage}
         disabled={currentPage === 1}
-        className="text-gray-400 hover:text-gray-600 disabled:opacity-50 text-4xl cursor-pointer"
+        className="text-[#83b8e4] hover:text-[#00295c] disabled:opacity-50 text-4xl cursor-pointer font-bold"
         aria-label="Previous page"
       >
         ‹
@@ -49,10 +49,10 @@ const Pagination = ({
           <button
             key={page}
             onClick={() => onPageChange(page)}
-            className={`w-8 h-8 flex items-center justify-center text-md pt-2 cursor-pointer ${
+            className={`w-8 h-8 flex items-center justify-center text-md pt-2 cursor-pointer font-bold ${
               currentPage === page
-                ? "text-blue-500"
-                : "text-gray-400 hover:text-gray-600"
+                ? "text-[#00295c]"
+                : "text-[#83b8e4] hover:text-[#00295c]"
             }`}
           >
             {page}
@@ -64,7 +64,7 @@ const Pagination = ({
       <button
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
-        className="text-gray-400 hover:text-gray-600 disabled:opacity-50 text-4xl cursor-pointer"
+        className="text-[#83b8e4] hover:text-[#00295c]  disabled:opacity-50 text-4xl cursor-pointer font-bold"
         aria-label="Next page"
       >
         ›

@@ -11,6 +11,8 @@ export const AllianceSection = ({
   filter,
   isReversed = false,
 }: AllianceSectionProps) => {
+
+  
   const contentSection = (
     <div
       className={`w-full md:w-1/2 ${
@@ -47,7 +49,7 @@ export const AllianceSection = ({
         priority
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
-      <div className="absolute inset-0 bg-blue-950/40 z-10" />
+      <div className="absolute inset-0 bg-[#04315e] opacity-40 z-10" />
       <div className="relative z-20 w-32 h-32 md:w-40 md:h-40">
         <Image
           src={logo}

@@ -17,7 +17,7 @@ const DesktopNavigation = () => {
               href={item.href}
               className={`font-medium transition-colors duration-200 ${
                 isActive
-                  ? "text-[#00295c]"
+                  ? "text-[#00295c] font-bold"
                   : "text-gray-500 hover:text-[#00295c]"
               }`}
             >

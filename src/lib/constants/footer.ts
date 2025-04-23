@@ -1,8 +1,8 @@
 export const navigationItems = [
-  { href: "#", label: "Quienes somos" },
-  { href: "#", label: "Nuestras alianzas" },
-  { href: "#", label: "Noticias" },
-  { href: "#", label: "Contacto" },
+  { href: "/", label: "Quienes somos" },
+  { href: "/nuestras-alianzas", label: "Nuestras alianzas" },
+  { href: "/noticias", label: "Noticias" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 export const socialLinks = {

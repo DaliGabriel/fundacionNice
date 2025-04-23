@@ -50,7 +50,7 @@ const LastNews = () => {
           className="text-3xl md:text-4xl text-[#002E6D] mb-12"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto max-w-7xl px-4 place-items-center">
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}

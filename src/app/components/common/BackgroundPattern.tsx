@@ -1,10 +1,6 @@
 import Image from "next/image";
 
-interface BackgroundPatternProps {
-  pattern: string; // Path to the SVG file
-}
-
-const BackgroundPattern = ({ pattern }: BackgroundPatternProps) => {
+const BackgroundPattern = ({ pattern }: { pattern: string }) => {
   return (
     <div className="absolute inset-0 w-full h-full">
       <Image
