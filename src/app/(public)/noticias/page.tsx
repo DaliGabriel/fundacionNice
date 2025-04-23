@@ -6,7 +6,7 @@ import NewsContentWrapper from "../../components/news/NewsContentWrapper";
 
 const News = () => {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[#e6e6e6] dark:bg-[#e6e6e6]">
       <Hero
         title="Noticias"
         image="/heros/noticias.jpg"
