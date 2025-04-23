@@ -3,7 +3,7 @@ import { CardDescriptionProps } from "../../../../../lib/types/card";
 const CardDescription = ({ description }: CardDescriptionProps) => {
   return (
     <div>
-      <p className="text-sm mb-4 line-clamp-3 font-bold text-black dark:text-white">
+      <p className="text-sm mb-4 line-clamp-3 font-bold text-black dark:text-black">
         {description}
       </p>
     </div>

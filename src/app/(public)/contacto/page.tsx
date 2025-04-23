@@ -4,7 +4,7 @@ import { ContentLayout } from "../../components/common/ContentLayout";
 
 const Contacto = () => {
   return (
-    <main>
+    <main className="dark:bg-[#e6e6e6] bg-[#e6e6e6]">
       <ContactCover />
       <ContentLayout centered paddingTop="pt-[300px]">
         <ContactForm />

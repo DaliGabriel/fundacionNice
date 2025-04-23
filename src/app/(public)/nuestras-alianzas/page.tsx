@@ -4,13 +4,13 @@ import Hero from "../../components/common/Hero";
 import AllianceText from "../../components/alliances/AllianceText";
 const NuestrasAlianzas = () => {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen ">
       <Hero
         title="Nuestras Alianzas"
         image="/heros/nuestrasalianzas.jpg"
         mobileImage="/heros/nuestrasalianzasMobile.jpg"
       />
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto dark:bg-[#e6e6e6] bg-[#e6e6e6] text-black dark:text-black">
         <AllianceText />
         <div className="flex flex-col divide-y">
           {alliancesSection.map((alliance, index) => (
