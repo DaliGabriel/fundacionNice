@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <>
       <Hero
+        backgroundPattern={false}
         darkOverlay={false}
         image="/heros/home.jpg"
         mobileImage="/heros/homeMobile.jpg"

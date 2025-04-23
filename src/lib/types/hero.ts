@@ -3,4 +3,5 @@ export interface HeroProps {
   image: string;
   mobileImage?: string;
   darkOverlay?: boolean;
+  backgroundPattern?: boolean;
 }

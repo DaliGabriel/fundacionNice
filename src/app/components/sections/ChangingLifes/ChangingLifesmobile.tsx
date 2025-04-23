@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Button from "../../common/Buttton";
-import BackgroundPattern from "../../common/BackgroundPattern";
 
 const ChangingLifesmobile = () => {
   return (
