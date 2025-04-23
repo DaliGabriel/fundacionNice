@@ -4,7 +4,7 @@ import { NewsContentProps } from '../../../lib/types/news';
 
 export const NewsContent = ({ posts, loading }: NewsContentProps) => {
   if (loading) {
-    return <LoadingSkeleton count={3} />;
+    return <LoadingSkeleton count={6} />;
   }
 
   if (posts.length === 0) {

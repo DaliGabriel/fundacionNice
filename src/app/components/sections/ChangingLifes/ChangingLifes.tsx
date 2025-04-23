@@ -4,10 +4,10 @@ import ChangingLifesmobile from "./ChangingLifesmobile";
 const ChangingLifes = () => {
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <ChangingLifesDesktop />
       </div>
-      <div className="block md:hidden">
+      <div className="block lg:hidden">
         <ChangingLifesmobile />
       </div>
     </>

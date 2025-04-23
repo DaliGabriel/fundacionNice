@@ -6,8 +6,8 @@ import WaveBottom from "./Shapes/WaveBottom";
 
 const ChangingLifesDesktop = () => {
   return (
-    <div>
-      <section className="relative mx-auto overflow-hidden">
+    <div className="relative w-full overflow-hidden">
+      <section className="relative w-full">
         <div className="absolute inset-0 w-full md:w-1/2 left-0">
           <Image
             src="/sections/cambiandoVidas.jpg"
@@ -18,12 +18,16 @@ const ChangingLifesDesktop = () => {
           />
         </div>
         <WaveTop />
-        <div className="py-32">
-          <BackgroundPattern pattern="/divs/Div2.svg" />
-          <div className="container mx-auto relative z-10">
+        <div className="relative lg:py-10 xl:py-24 2xl:py-28 w-full">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
+            <div className="w-full h-full max-w-[2000px] mx-auto relative">
+              <BackgroundPattern pattern="/divs/Div2.svg" />
+            </div>
+          </div>
+          <div className="container mx-auto relative z-10 max-w-[1400px]">
             <div className="grid md:grid-cols-2 items-center text-center">
               <div />
-              <div className="space-y-6 px-4 md:px-8">
+              <div className="space-y-6 px-4 md:px-8 lg:px-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-[#00295c]">
                   Cambiando vidas
                 </h2>

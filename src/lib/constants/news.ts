@@ -48,5 +48,5 @@ export const categories = [
   },
 ];
 
-export const DEFAULT_POSTS_PER_PAGE = 3;
+export const DEFAULT_POSTS_PER_PAGE = 6;
  
