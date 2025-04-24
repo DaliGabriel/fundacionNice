@@ -2,6 +2,7 @@ export interface Alliance {
   name: string;
   logo: string;
   logoWithColor: string;
+  filter: string;
 }
 
 export interface AllianceSectionProps {

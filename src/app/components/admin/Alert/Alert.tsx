@@ -1,3 +1,5 @@
+"use client";
+
 import { AlertProps } from "../../../../lib/types/alert";
 import { Alert } from "./index";
 

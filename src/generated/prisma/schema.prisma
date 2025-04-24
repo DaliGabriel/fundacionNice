@@ -79,3 +79,12 @@ model Message {
   createdAt DateTime @default(now()) // When the message was sent
   updatedAt DateTime @updatedAt
 }
+
+model Numbers {
+  id          Int      @id @default(autoincrement())
+  icon        String // Store the icon path (e.g. "/logos/cifras1.svg")
+  number      String // The number/value (e.g. "190,000")
+  description String // The description text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

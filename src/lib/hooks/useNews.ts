@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { NewsResponse, Post, UseNewsReturn } from "../types/news";
 import { DEFAULT_POSTS_PER_PAGE } from "../constants/news";
 import { useSearchParams } from "next/navigation";
+import { fetchWithHeaders } from "../utils/api";
+import { ROUTES } from "../constants/routes";
 
 export const useNews = (
   postsPerPage: number = DEFAULT_POSTS_PER_PAGE
@@ -9,31 +11,36 @@ export const useNews = (
   const [posts, setPosts] = useState<Post[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const searchParams = useSearchParams();
 
   const fetchPosts = useCallback(async (): Promise<void> => {
     try {
-      setLoading(true);
+      setIsLoading(true);
+      setError(null);
+
       // Get filter from URL if exists
       const filter = searchParams.get("filter");
       const url = filter
-        ? `/api/admin/posts?filter=${filter}`
-        : "/api/admin/posts";
+        ? `${ROUTES.API.ADMIN.POSTS}?filter=${filter}`
+        : ROUTES.API.ADMIN.POSTS;
 
-      const response = await fetch(url);
-      const result: NewsResponse = await response.json();
+      const result: NewsResponse = await fetchWithHeaders(url);
 
       if (result.success) {
         setPosts(result.data);
         setTotalPages(Math.ceil(result.data.length / postsPerPage));
         // Reset to first page when filter changes
         setCurrentPage(1);
+      } else {
+        setError("Failed to fetch posts");
       }
-    } catch (error) {
-      console.error("Error fetching posts:", error);
+    } catch (err) {
+      console.error("Error fetching posts:", err);
+      setError(err instanceof Error ? err.message : "Failed to fetch posts");
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }, [searchParams, postsPerPage]);
 
@@ -58,12 +65,22 @@ export const useNews = (
   const newsUtils = useMemo(
     () => ({
       currentPosts,
-      loading,
+      isLoading,
+      error,
       totalPages,
       currentPage,
       handlePageChange,
+      refetch: fetchPosts,
     }),
-    [currentPosts, loading, totalPages, currentPage, handlePageChange]
+    [
+      currentPosts,
+      isLoading,
+      error,
+      totalPages,
+      currentPage,
+      handlePageChange,
+      fetchPosts,
+    ]
   );
 
   return newsUtils;

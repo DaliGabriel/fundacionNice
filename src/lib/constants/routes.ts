@@ -1,7 +1,7 @@
 export const ROUTES = {
   ADMIN: {
     BASE: "/admin",
-    LOGIN: "/admin/login",
+    LOGIN: "/login",
     POSTS: "/admin/posts",
     POST: (id: string | number) => `/admin/posts/${id}`,
   },
@@ -11,7 +11,12 @@ export const ROUTES = {
       LOGIN: "/api/admin/login",
       POSTS: "/api/admin/posts",
       POST: (id: string | number) => `/api/admin/posts/${id}`,
+      NUMBERS: (id: string | number) => `/api/admin/numbers/${id}`,
+      UPLOAD: "/api/admin/upload",
     },
+    CONTACT: "/api/contact",
+    LAST_NEWS: "/api/lastNews",
+    NUMBERS: "/api/numbers",
   },
 } as const;
 

@@ -2,6 +2,7 @@ import { alliancesSection } from "../../../lib/constants/alliances";
 import { AllianceSection } from "../../components/alliances/AllianceSection";
 import Hero from "../../components/common/Hero";
 import AllianceText from "../../components/alliances/AllianceText";
+
 const NuestrasAlianzas = () => {
   return (
     <main className="min-h-screen ">

@@ -4,4 +4,5 @@ export interface HeroProps {
   mobileImage?: string;
   darkOverlay?: boolean;
   backgroundPattern?: boolean;
+  lgMinHeight?: string;
 }

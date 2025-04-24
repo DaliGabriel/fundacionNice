@@ -5,13 +5,16 @@ import { FormSelect } from "./FormSelect";
 import { FormCheckbox } from "./FormCheckbox";
 import { useState } from "react";
 import Image from "next/image";
+import { useFileUpload } from "../../../../lib/hooks/useFileUpload";
 
 export const PostFormFields = ({
   formData,
   handleChange,
 }: PostFormFieldsProps) => {
-  const [uploading, setUploading] = useState<Record<string, boolean>>({});
-  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [uploadingFields, setUploadingFields] = useState<
+    Record<string, boolean>
+  >({});
+  const { uploadFile, error: uploadError } = useFileUpload();
 
   const handleImageUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -21,35 +24,19 @@ export const PostFormFields = ({
     if (!file) return;
 
     try {
-      setUploading((prev) => ({ ...prev, [fieldId]: true }));
-      setUploadError(null);
+      setUploadingFields((prev) => ({ ...prev, [fieldId]: true }));
+      const url = await uploadFile(file);
 
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (!data.success) {
-        throw new Error(data.error || "Upload failed");
-      }
-
-      // Update the form data with the new image URL
       handleChange({
         target: {
           id: fieldId,
-          value: data.url,
+          value: url,
         },
       } as React.ChangeEvent<HTMLInputElement>);
     } catch (error) {
       console.error("Error uploading image:", error);
-      setUploadError(error instanceof Error ? error.message : "Upload failed");
     } finally {
-      setUploading((prev) => ({ ...prev, [fieldId]: false }));
+      setUploadingFields((prev) => ({ ...prev, [fieldId]: false }));
     }
   };
 
@@ -61,9 +48,9 @@ export const PostFormFields = ({
         accept="image/*"
         onChange={(e) => handleImageUpload(e, fieldId)}
         className="w-full px-3 py-2 border rounded-md"
-        disabled={uploading[fieldId]}
+        disabled={uploadingFields[fieldId]}
       />
-      {uploading[fieldId] && (
+      {uploadingFields[fieldId] && (
         <div className="mt-2 text-blue-600">Uploading...</div>
       )}
       {formData[fieldId as keyof typeof formData] && (

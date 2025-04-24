@@ -4,7 +4,6 @@ import Link from "next/link";
 import useLastNews from "../../../../lib/hooks/useLastNews";
 import { PostCardProps } from "../../../../lib/types/post";
 import Button from "../../common/Buttton";
-import { LoadingSpinner } from "../../common/LoadingSpinner";
 import Title from "../../common/Title";
 import CardCategory from "./Card/CardCategory";
 import CardContentLayout from "./Card/CardContentLayout";
@@ -13,6 +12,7 @@ import CardDescription from "./Card/CardDescription";
 import CardImage from "./Card/CardImage";
 import CardLayout from "./Card/CardLayout";
 import CardTitle from "./Card/CardTitle";
+import LoadingNews from "./LoadingNews";
 
 const PostCard = ({ post }: PostCardProps) => (
   <Link href={`/blog/${post.id}`}>
@@ -36,10 +36,10 @@ const PostCard = ({ post }: PostCardProps) => (
 
 // Main component
 const LastNews = () => {
-  const { posts, loading } = useLastNews();
+  const { posts, isLoading } = useLastNews();
 
-  if (loading) {
-    return <LoadingSpinner />;
+  if (isLoading) {
+    return <LoadingNews />;
   }
 
   return (

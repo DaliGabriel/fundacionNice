@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { alliances } from "../../../../lib/constants/alliances";
 import Title from "../../common/Title";
+import Link from "next/link";
 
 const OurAlliances = () => {
   const [hoveredAlliance, setHoveredAlliance] = useState<string | null>(null);
@@ -17,24 +18,29 @@ const OurAlliances = () => {
         />
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
           {alliances.map((alliance) => (
-            <div
+            <Link
+              href={`/noticias?filter=${alliance.filter}`}
               key={alliance.name}
-              className="w-40 md:w-52 h-24 relative grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
-              onMouseEnter={() => setHoveredAlliance(alliance.name)}
-              onMouseLeave={() => setHoveredAlliance(null)}
             >
-              <Image
-                src={
-                  hoveredAlliance === alliance.name
-                    ? alliance.logoWithColor
-                    : alliance.logo
-                }
-                alt={`${alliance.name} logo`}
-                fill
-                style={{ objectFit: "contain" }}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
+              <div
+                key={alliance.name}
+                className="w-40 md:w-52 h-24 relative grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+                onMouseEnter={() => setHoveredAlliance(alliance.name)}
+                onMouseLeave={() => setHoveredAlliance(null)}
+              >
+                <Image
+                  src={
+                    hoveredAlliance === alliance.name
+                      ? alliance.logoWithColor
+                      : alliance.logo
+                  }
+                  alt={`${alliance.name} logo`}
+                  fill
+                  style={{ objectFit: "contain" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            </Link>
           ))}
         </div>
       </div>

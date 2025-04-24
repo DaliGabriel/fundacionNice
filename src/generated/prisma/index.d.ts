@@ -34,6 +34,11 @@ export type Admin = $Result.DefaultSelection<Prisma.$AdminPayload>
  *  * Stores messages sent through the website's contact form.
  */
 export type Message = $Result.DefaultSelection<Prisma.$MessagePayload>
+/**
+ * Model Numbers
+ * 
+ */
+export type Numbers = $Result.DefaultSelection<Prisma.$NumbersPayload>
 
 /**
  * Enums
@@ -209,6 +214,16 @@ export class PrismaClient<
     * ```
     */
   get message(): Prisma.MessageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.numbers`: Exposes CRUD operations for the **Numbers** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Numbers
+    * const numbers = await prisma.numbers.findMany()
+    * ```
+    */
+  get numbers(): Prisma.NumbersDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -651,7 +666,8 @@ export namespace Prisma {
   export const ModelName: {
     Post: 'Post',
     Admin: 'Admin',
-    Message: 'Message'
+    Message: 'Message',
+    Numbers: 'Numbers'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -670,7 +686,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "post" | "admin" | "message"
+      modelProps: "post" | "admin" | "message" | "numbers"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -896,6 +912,80 @@ export namespace Prisma {
           }
         }
       }
+      Numbers: {
+        payload: Prisma.$NumbersPayload<ExtArgs>
+        fields: Prisma.NumbersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NumbersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NumbersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload>
+          }
+          findFirst: {
+            args: Prisma.NumbersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NumbersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload>
+          }
+          findMany: {
+            args: Prisma.NumbersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload>[]
+          }
+          create: {
+            args: Prisma.NumbersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload>
+          }
+          createMany: {
+            args: Prisma.NumbersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NumbersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload>[]
+          }
+          delete: {
+            args: Prisma.NumbersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload>
+          }
+          update: {
+            args: Prisma.NumbersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload>
+          }
+          deleteMany: {
+            args: Prisma.NumbersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NumbersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NumbersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload>[]
+          }
+          upsert: {
+            args: Prisma.NumbersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NumbersPayload>
+          }
+          aggregate: {
+            args: Prisma.NumbersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNumbers>
+          }
+          groupBy: {
+            args: Prisma.NumbersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NumbersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NumbersCountArgs<ExtArgs>
+            result: $Utils.Optional<NumbersCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -983,6 +1073,7 @@ export namespace Prisma {
     post?: PostOmit
     admin?: AdminOmit
     message?: MessageOmit
+    numbers?: NumbersOmit
   }
 
   /* Types for Logging */
@@ -4321,6 +4412,1048 @@ export namespace Prisma {
 
 
   /**
+   * Model Numbers
+   */
+
+  export type AggregateNumbers = {
+    _count: NumbersCountAggregateOutputType | null
+    _avg: NumbersAvgAggregateOutputType | null
+    _sum: NumbersSumAggregateOutputType | null
+    _min: NumbersMinAggregateOutputType | null
+    _max: NumbersMaxAggregateOutputType | null
+  }
+
+  export type NumbersAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type NumbersSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type NumbersMinAggregateOutputType = {
+    id: number | null
+    icon: string | null
+    number: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NumbersMaxAggregateOutputType = {
+    id: number | null
+    icon: string | null
+    number: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NumbersCountAggregateOutputType = {
+    id: number
+    icon: number
+    number: number
+    description: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NumbersAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type NumbersSumAggregateInputType = {
+    id?: true
+  }
+
+  export type NumbersMinAggregateInputType = {
+    id?: true
+    icon?: true
+    number?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NumbersMaxAggregateInputType = {
+    id?: true
+    icon?: true
+    number?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NumbersCountAggregateInputType = {
+    id?: true
+    icon?: true
+    number?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NumbersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Numbers to aggregate.
+     */
+    where?: NumbersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Numbers to fetch.
+     */
+    orderBy?: NumbersOrderByWithRelationInput | NumbersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NumbersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Numbers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Numbers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Numbers
+    **/
+    _count?: true | NumbersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NumbersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NumbersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NumbersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NumbersMaxAggregateInputType
+  }
+
+  export type GetNumbersAggregateType<T extends NumbersAggregateArgs> = {
+        [P in keyof T & keyof AggregateNumbers]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNumbers[P]>
+      : GetScalarType<T[P], AggregateNumbers[P]>
+  }
+
+
+
+
+  export type NumbersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NumbersWhereInput
+    orderBy?: NumbersOrderByWithAggregationInput | NumbersOrderByWithAggregationInput[]
+    by: NumbersScalarFieldEnum[] | NumbersScalarFieldEnum
+    having?: NumbersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NumbersCountAggregateInputType | true
+    _avg?: NumbersAvgAggregateInputType
+    _sum?: NumbersSumAggregateInputType
+    _min?: NumbersMinAggregateInputType
+    _max?: NumbersMaxAggregateInputType
+  }
+
+  export type NumbersGroupByOutputType = {
+    id: number
+    icon: string
+    number: string
+    description: string
+    createdAt: Date
+    updatedAt: Date
+    _count: NumbersCountAggregateOutputType | null
+    _avg: NumbersAvgAggregateOutputType | null
+    _sum: NumbersSumAggregateOutputType | null
+    _min: NumbersMinAggregateOutputType | null
+    _max: NumbersMaxAggregateOutputType | null
+  }
+
+  type GetNumbersGroupByPayload<T extends NumbersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NumbersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NumbersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NumbersGroupByOutputType[P]>
+            : GetScalarType<T[P], NumbersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NumbersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    icon?: boolean
+    number?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["numbers"]>
+
+  export type NumbersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    icon?: boolean
+    number?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["numbers"]>
+
+  export type NumbersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    icon?: boolean
+    number?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["numbers"]>
+
+  export type NumbersSelectScalar = {
+    id?: boolean
+    icon?: boolean
+    number?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type NumbersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "icon" | "number" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["numbers"]>
+
+  export type $NumbersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Numbers"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      icon: string
+      number: string
+      description: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["numbers"]>
+    composites: {}
+  }
+
+  type NumbersGetPayload<S extends boolean | null | undefined | NumbersDefaultArgs> = $Result.GetResult<Prisma.$NumbersPayload, S>
+
+  type NumbersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NumbersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NumbersCountAggregateInputType | true
+    }
+
+  export interface NumbersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Numbers'], meta: { name: 'Numbers' } }
+    /**
+     * Find zero or one Numbers that matches the filter.
+     * @param {NumbersFindUniqueArgs} args - Arguments to find a Numbers
+     * @example
+     * // Get one Numbers
+     * const numbers = await prisma.numbers.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NumbersFindUniqueArgs>(args: SelectSubset<T, NumbersFindUniqueArgs<ExtArgs>>): Prisma__NumbersClient<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Numbers that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NumbersFindUniqueOrThrowArgs} args - Arguments to find a Numbers
+     * @example
+     * // Get one Numbers
+     * const numbers = await prisma.numbers.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NumbersFindUniqueOrThrowArgs>(args: SelectSubset<T, NumbersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NumbersClient<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Numbers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumbersFindFirstArgs} args - Arguments to find a Numbers
+     * @example
+     * // Get one Numbers
+     * const numbers = await prisma.numbers.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NumbersFindFirstArgs>(args?: SelectSubset<T, NumbersFindFirstArgs<ExtArgs>>): Prisma__NumbersClient<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Numbers that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumbersFindFirstOrThrowArgs} args - Arguments to find a Numbers
+     * @example
+     * // Get one Numbers
+     * const numbers = await prisma.numbers.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NumbersFindFirstOrThrowArgs>(args?: SelectSubset<T, NumbersFindFirstOrThrowArgs<ExtArgs>>): Prisma__NumbersClient<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Numbers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumbersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Numbers
+     * const numbers = await prisma.numbers.findMany()
+     * 
+     * // Get first 10 Numbers
+     * const numbers = await prisma.numbers.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const numbersWithIdOnly = await prisma.numbers.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NumbersFindManyArgs>(args?: SelectSubset<T, NumbersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Numbers.
+     * @param {NumbersCreateArgs} args - Arguments to create a Numbers.
+     * @example
+     * // Create one Numbers
+     * const Numbers = await prisma.numbers.create({
+     *   data: {
+     *     // ... data to create a Numbers
+     *   }
+     * })
+     * 
+     */
+    create<T extends NumbersCreateArgs>(args: SelectSubset<T, NumbersCreateArgs<ExtArgs>>): Prisma__NumbersClient<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Numbers.
+     * @param {NumbersCreateManyArgs} args - Arguments to create many Numbers.
+     * @example
+     * // Create many Numbers
+     * const numbers = await prisma.numbers.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NumbersCreateManyArgs>(args?: SelectSubset<T, NumbersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Numbers and returns the data saved in the database.
+     * @param {NumbersCreateManyAndReturnArgs} args - Arguments to create many Numbers.
+     * @example
+     * // Create many Numbers
+     * const numbers = await prisma.numbers.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Numbers and only return the `id`
+     * const numbersWithIdOnly = await prisma.numbers.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NumbersCreateManyAndReturnArgs>(args?: SelectSubset<T, NumbersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Numbers.
+     * @param {NumbersDeleteArgs} args - Arguments to delete one Numbers.
+     * @example
+     * // Delete one Numbers
+     * const Numbers = await prisma.numbers.delete({
+     *   where: {
+     *     // ... filter to delete one Numbers
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NumbersDeleteArgs>(args: SelectSubset<T, NumbersDeleteArgs<ExtArgs>>): Prisma__NumbersClient<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Numbers.
+     * @param {NumbersUpdateArgs} args - Arguments to update one Numbers.
+     * @example
+     * // Update one Numbers
+     * const numbers = await prisma.numbers.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NumbersUpdateArgs>(args: SelectSubset<T, NumbersUpdateArgs<ExtArgs>>): Prisma__NumbersClient<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Numbers.
+     * @param {NumbersDeleteManyArgs} args - Arguments to filter Numbers to delete.
+     * @example
+     * // Delete a few Numbers
+     * const { count } = await prisma.numbers.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NumbersDeleteManyArgs>(args?: SelectSubset<T, NumbersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Numbers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumbersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Numbers
+     * const numbers = await prisma.numbers.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NumbersUpdateManyArgs>(args: SelectSubset<T, NumbersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Numbers and returns the data updated in the database.
+     * @param {NumbersUpdateManyAndReturnArgs} args - Arguments to update many Numbers.
+     * @example
+     * // Update many Numbers
+     * const numbers = await prisma.numbers.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Numbers and only return the `id`
+     * const numbersWithIdOnly = await prisma.numbers.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NumbersUpdateManyAndReturnArgs>(args: SelectSubset<T, NumbersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Numbers.
+     * @param {NumbersUpsertArgs} args - Arguments to update or create a Numbers.
+     * @example
+     * // Update or create a Numbers
+     * const numbers = await prisma.numbers.upsert({
+     *   create: {
+     *     // ... data to create a Numbers
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Numbers we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NumbersUpsertArgs>(args: SelectSubset<T, NumbersUpsertArgs<ExtArgs>>): Prisma__NumbersClient<$Result.GetResult<Prisma.$NumbersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Numbers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumbersCountArgs} args - Arguments to filter Numbers to count.
+     * @example
+     * // Count the number of Numbers
+     * const count = await prisma.numbers.count({
+     *   where: {
+     *     // ... the filter for the Numbers we want to count
+     *   }
+     * })
+    **/
+    count<T extends NumbersCountArgs>(
+      args?: Subset<T, NumbersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NumbersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Numbers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumbersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NumbersAggregateArgs>(args: Subset<T, NumbersAggregateArgs>): Prisma.PrismaPromise<GetNumbersAggregateType<T>>
+
+    /**
+     * Group by Numbers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NumbersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NumbersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NumbersGroupByArgs['orderBy'] }
+        : { orderBy?: NumbersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NumbersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNumbersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Numbers model
+   */
+  readonly fields: NumbersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Numbers.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NumbersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Numbers model
+   */
+  interface NumbersFieldRefs {
+    readonly id: FieldRef<"Numbers", 'Int'>
+    readonly icon: FieldRef<"Numbers", 'String'>
+    readonly number: FieldRef<"Numbers", 'String'>
+    readonly description: FieldRef<"Numbers", 'String'>
+    readonly createdAt: FieldRef<"Numbers", 'DateTime'>
+    readonly updatedAt: FieldRef<"Numbers", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Numbers findUnique
+   */
+  export type NumbersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * Filter, which Numbers to fetch.
+     */
+    where: NumbersWhereUniqueInput
+  }
+
+  /**
+   * Numbers findUniqueOrThrow
+   */
+  export type NumbersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * Filter, which Numbers to fetch.
+     */
+    where: NumbersWhereUniqueInput
+  }
+
+  /**
+   * Numbers findFirst
+   */
+  export type NumbersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * Filter, which Numbers to fetch.
+     */
+    where?: NumbersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Numbers to fetch.
+     */
+    orderBy?: NumbersOrderByWithRelationInput | NumbersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Numbers.
+     */
+    cursor?: NumbersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Numbers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Numbers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Numbers.
+     */
+    distinct?: NumbersScalarFieldEnum | NumbersScalarFieldEnum[]
+  }
+
+  /**
+   * Numbers findFirstOrThrow
+   */
+  export type NumbersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * Filter, which Numbers to fetch.
+     */
+    where?: NumbersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Numbers to fetch.
+     */
+    orderBy?: NumbersOrderByWithRelationInput | NumbersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Numbers.
+     */
+    cursor?: NumbersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Numbers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Numbers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Numbers.
+     */
+    distinct?: NumbersScalarFieldEnum | NumbersScalarFieldEnum[]
+  }
+
+  /**
+   * Numbers findMany
+   */
+  export type NumbersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * Filter, which Numbers to fetch.
+     */
+    where?: NumbersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Numbers to fetch.
+     */
+    orderBy?: NumbersOrderByWithRelationInput | NumbersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Numbers.
+     */
+    cursor?: NumbersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Numbers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Numbers.
+     */
+    skip?: number
+    distinct?: NumbersScalarFieldEnum | NumbersScalarFieldEnum[]
+  }
+
+  /**
+   * Numbers create
+   */
+  export type NumbersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Numbers.
+     */
+    data: XOR<NumbersCreateInput, NumbersUncheckedCreateInput>
+  }
+
+  /**
+   * Numbers createMany
+   */
+  export type NumbersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Numbers.
+     */
+    data: NumbersCreateManyInput | NumbersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Numbers createManyAndReturn
+   */
+  export type NumbersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * The data used to create many Numbers.
+     */
+    data: NumbersCreateManyInput | NumbersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Numbers update
+   */
+  export type NumbersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Numbers.
+     */
+    data: XOR<NumbersUpdateInput, NumbersUncheckedUpdateInput>
+    /**
+     * Choose, which Numbers to update.
+     */
+    where: NumbersWhereUniqueInput
+  }
+
+  /**
+   * Numbers updateMany
+   */
+  export type NumbersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Numbers.
+     */
+    data: XOR<NumbersUpdateManyMutationInput, NumbersUncheckedUpdateManyInput>
+    /**
+     * Filter which Numbers to update
+     */
+    where?: NumbersWhereInput
+    /**
+     * Limit how many Numbers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Numbers updateManyAndReturn
+   */
+  export type NumbersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * The data used to update Numbers.
+     */
+    data: XOR<NumbersUpdateManyMutationInput, NumbersUncheckedUpdateManyInput>
+    /**
+     * Filter which Numbers to update
+     */
+    where?: NumbersWhereInput
+    /**
+     * Limit how many Numbers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Numbers upsert
+   */
+  export type NumbersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Numbers to update in case it exists.
+     */
+    where: NumbersWhereUniqueInput
+    /**
+     * In case the Numbers found by the `where` argument doesn't exist, create a new Numbers with this data.
+     */
+    create: XOR<NumbersCreateInput, NumbersUncheckedCreateInput>
+    /**
+     * In case the Numbers was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NumbersUpdateInput, NumbersUncheckedUpdateInput>
+  }
+
+  /**
+   * Numbers delete
+   */
+  export type NumbersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+    /**
+     * Filter which Numbers to delete.
+     */
+    where: NumbersWhereUniqueInput
+  }
+
+  /**
+   * Numbers deleteMany
+   */
+  export type NumbersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Numbers to delete
+     */
+    where?: NumbersWhereInput
+    /**
+     * Limit how many Numbers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Numbers without action
+   */
+  export type NumbersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Numbers
+     */
+    select?: NumbersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Numbers
+     */
+    omit?: NumbersOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4377,6 +5510,18 @@ export namespace Prisma {
   };
 
   export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+  export const NumbersScalarFieldEnum: {
+    id: 'id',
+    icon: 'icon',
+    number: 'number',
+    description: 'description',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type NumbersScalarFieldEnum = (typeof NumbersScalarFieldEnum)[keyof typeof NumbersScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4710,6 +5855,65 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
   }
 
+  export type NumbersWhereInput = {
+    AND?: NumbersWhereInput | NumbersWhereInput[]
+    OR?: NumbersWhereInput[]
+    NOT?: NumbersWhereInput | NumbersWhereInput[]
+    id?: IntFilter<"Numbers"> | number
+    icon?: StringFilter<"Numbers"> | string
+    number?: StringFilter<"Numbers"> | string
+    description?: StringFilter<"Numbers"> | string
+    createdAt?: DateTimeFilter<"Numbers"> | Date | string
+    updatedAt?: DateTimeFilter<"Numbers"> | Date | string
+  }
+
+  export type NumbersOrderByWithRelationInput = {
+    id?: SortOrder
+    icon?: SortOrder
+    number?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NumbersWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: NumbersWhereInput | NumbersWhereInput[]
+    OR?: NumbersWhereInput[]
+    NOT?: NumbersWhereInput | NumbersWhereInput[]
+    icon?: StringFilter<"Numbers"> | string
+    number?: StringFilter<"Numbers"> | string
+    description?: StringFilter<"Numbers"> | string
+    createdAt?: DateTimeFilter<"Numbers"> | Date | string
+    updatedAt?: DateTimeFilter<"Numbers"> | Date | string
+  }, "id">
+
+  export type NumbersOrderByWithAggregationInput = {
+    id?: SortOrder
+    icon?: SortOrder
+    number?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NumbersCountOrderByAggregateInput
+    _avg?: NumbersAvgOrderByAggregateInput
+    _max?: NumbersMaxOrderByAggregateInput
+    _min?: NumbersMinOrderByAggregateInput
+    _sum?: NumbersSumOrderByAggregateInput
+  }
+
+  export type NumbersScalarWhereWithAggregatesInput = {
+    AND?: NumbersScalarWhereWithAggregatesInput | NumbersScalarWhereWithAggregatesInput[]
+    OR?: NumbersScalarWhereWithAggregatesInput[]
+    NOT?: NumbersScalarWhereWithAggregatesInput | NumbersScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Numbers"> | number
+    icon?: StringWithAggregatesFilter<"Numbers"> | string
+    number?: StringWithAggregatesFilter<"Numbers"> | string
+    description?: StringWithAggregatesFilter<"Numbers"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Numbers"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Numbers"> | Date | string
+  }
+
   export type PostCreateInput = {
     title: string
     cover: string
@@ -4949,6 +6153,66 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     message?: NullableStringFieldUpdateOperationsInput | string | null
     read?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NumbersCreateInput = {
+    icon: string
+    number: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NumbersUncheckedCreateInput = {
+    id?: number
+    icon: string
+    number: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NumbersUpdateInput = {
+    icon?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NumbersUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    icon?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NumbersCreateManyInput = {
+    id?: number
+    icon: string
+    number: string
+    description: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NumbersUpdateManyMutationInput = {
+    icon?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NumbersUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    icon?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5235,6 +6499,41 @@ export namespace Prisma {
   }
 
   export type MessageSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type NumbersCountOrderByAggregateInput = {
+    id?: SortOrder
+    icon?: SortOrder
+    number?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NumbersAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type NumbersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    icon?: SortOrder
+    number?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NumbersMinOrderByAggregateInput = {
+    id?: SortOrder
+    icon?: SortOrder
+    number?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NumbersSumOrderByAggregateInput = {
     id?: SortOrder
   }
 

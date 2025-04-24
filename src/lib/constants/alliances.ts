@@ -5,26 +5,31 @@ export const alliances: readonly Alliance[] = [
     name: "Villa de los Niños Guadalajara",
     logo: "/logos/villaDeLosNinos.svg",
     logoWithColor: "/logos/villaDeLosNinosColor.svg",
+    filter: "villa",
   },
   {
     name: "Scholas",
     logo: "/logos/scholas.svg",
     logoWithColor: "/logos/scholasColor.svg",
+    filter: "scholas",
   },
   {
     name: "Ludica",
     logo: "/logos/ludica.svg",
     logoWithColor: "/logos/ludicaColor.svg",
+    filter: "ludica",
   },
   {
     name: "Teleton",
     logo: "/logos/teleton.svg",
     logoWithColor: "/logos/teletonColor.svg",
+    filter: "teleton",
   },
   {
     name: "Media",
     logo: "/logos/1111.svg",
     logoWithColor: "/logos/1111Color.svg",
+    filter: "1111",
   },
 ];
 

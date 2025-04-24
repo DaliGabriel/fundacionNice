@@ -43,7 +43,7 @@ export const ContentLayout = ({
   centered = false,
 }: ContentLayoutProps) => {
   return (
-    <div className="max-w-6xl mx-auto px-4 bg-[#e6e6e6] dark:bg-[#e6e6e6]">
+    <div className="max-w-6xl mx-auto px-4">
       <div className={`relative ${paddingTop} ${paddingBottom}`}>
         <article
           className={`

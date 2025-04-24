@@ -1,14 +1,14 @@
+import HeroHome from "../components/common/HeroHome";
 import ChangingLifes from "../components/sections/ChangingLifes/ChangingLifes";
+import LastNews from "../components/sections/LastNews/LastNews";
 import MissionStatement from "../components/sections/MissionStatement/MissionStatement";
 import OurAlliances from "../components/sections/OurAlliances/OurAlliances";
-import LastNews from "../components/sections/LastNews/LastNews";
 import OurNumbers from "../components/sections/OurNumbers/OurNumbers";
-import Hero from "../components/common/Hero";
 
 export default function Home() {
   return (
     <>
-      <Hero
+      <HeroHome
         backgroundPattern={false}
         darkOverlay={false}
         image="/heros/home.jpg"

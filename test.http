@@ -64,6 +64,24 @@ Authorization: Bearer {{adminToken}}
 DELETE {{baseUrl}}/admin/posts/7
 Authorization: Bearer {{adminToken}}
 
+### Numbers Management
+### Get All Numbers
+GET {{baseUrl}}/numbers
+
+### Get Single Number
+GET {{baseUrl}}/numbers/1
+
+### Update Number
+PUT {{baseUrl}}/numbers/1
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "icon": "/logos/cifras1.svg",
+  "number": "195,000",
+  "description": "Alumnos graduados de la villa de los niños"
+}
+
 ### Test Cases
 ### Missing Required Fields
 POST {{baseUrl}}/admin/posts
@@ -97,4 +115,17 @@ Content-Type: application/json
 
 ### Non-existent Post
 GET {{baseUrl}}/admin/posts/999
-Authorization: Bearer {{adminToken}} 
+Authorization: Bearer {{adminToken}}
+
+### Numbers Test Cases
+### Non-existent Number
+GET {{baseUrl}}/numbers/999
+
+### Invalid Update Data
+PUT {{baseUrl}}/numbers/1
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "number": ""
+} 

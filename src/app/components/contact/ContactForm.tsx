@@ -1,47 +1,27 @@
 "use client";
 
-import { useState, FormEvent, useRef } from "react";
+import { FormEvent, useRef } from "react";
 import Button from "../common/Buttton";
+import { useContactForm } from "../../../lib/hooks/useContactForm";
 
 const ContactForm = () => {
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const formRef = useRef<HTMLFormElement>(null);
+  const { submitForm, status, isLoading } = useContactForm();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setStatus("idle");
 
     const formData = new FormData(e.currentTarget);
     const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
     };
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        setStatus("success");
-        formRef.current?.reset();
-      } else {
-        console.error("Server response:", result);
-        setStatus("error");
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      setStatus("error");
-    } finally {
-      setLoading(false);
+    await submitForm(data);
+    if (status === "success") {
+      formRef.current?.reset();
     }
   };
 
@@ -91,7 +71,7 @@ const ContactForm = () => {
               name="name"
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200"
               required
-              disabled={loading}
+              disabled={isLoading}
             />
           </div>
 
@@ -108,7 +88,7 @@ const ContactForm = () => {
               name="email"
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200"
               required
-              disabled={loading}
+              disabled={isLoading}
             />
           </div>
 
@@ -125,7 +105,7 @@ const ContactForm = () => {
               name="subject"
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200"
               required
-              disabled={loading}
+              disabled={isLoading}
             />
           </div>
 
@@ -141,14 +121,14 @@ const ContactForm = () => {
               name="message"
               rows={4}
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200 resize-none"
-              disabled={loading}
+              disabled={isLoading}
             />
           </div>
 
           <div className="text-center pt-6">
             <Button
-              text={loading ? "Enviando..." : "Enviar"}
-              disabled={loading}
+              text={isLoading ? "Enviando..." : "Enviar"}
+              disabled={isLoading}
             />
           </div>
         </form>

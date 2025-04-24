@@ -153,6 +153,15 @@ exports.Prisma.MessageScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.NumbersScalarFieldEnum = {
+  id: 'id',
+  icon: 'icon',
+  number: 'number',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -178,7 +187,8 @@ exports.Category = exports.$Enums.Category = {
 exports.Prisma.ModelName = {
   Post: 'Post',
   Admin: 'Admin',
-  Message: 'Message'
+  Message: 'Message',
+  Numbers: 'Numbers'
 };
 
 /**

@@ -1,7 +1,9 @@
 export interface Post {
-  id: number;
+  id: string;
   title: string;
+  content: string;
   cover: string;
+  createdAt: string;
   updatedAt: string;
 }
 
@@ -12,10 +14,12 @@ export interface NewsResponse {
 
 export interface UseNewsReturn {
   currentPosts: Post[];
-  loading: boolean;
+  isLoading: boolean;
+  error: string | null;
   totalPages: number;
   currentPage: number;
   handlePageChange: (pageNumber: number) => void;
+  refetch: () => Promise<void>;
 }
 
 export interface NewsCardProps {

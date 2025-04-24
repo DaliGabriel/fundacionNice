@@ -1,47 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { LoginForm as Form } from "./";
+import { useAuth } from "../../../../lib/hooks/useAuth";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+  const { login, error, isLoading } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-    setIsLoading(true);
 
-    try {
-      const response = await fetch("/api/admin/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        router.push("/admin/dashboard");
-      } else {
-        setError("Invalid credentials");
-      }
-    } catch {
-      setError("An error occurred. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+    await login({ username, password });
   };
 
   return (
     <Form.Layout>
       <Form.Header>Admin Login</Form.Header>
       <Form.Form onSubmit={handleSubmit}>
-        <Form.ErrorMessage message={error} />
+        <Form.ErrorMessage message={error || ""} />
         <Form.FormFields
           username={username}
           password={password}

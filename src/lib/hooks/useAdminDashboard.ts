@@ -10,8 +10,7 @@ import { EditingPost, Post } from "../types/post";
 import { PostFormData } from "../types/postForm";
 import { usePosts } from "./usePosts";
 import { convertPostToFormData } from "../utils/postUtils";
-import { initialAlertState } from "../constants/alert";
-import { AlertState } from "../types/alert";
+import { useAlertContext } from "../context/AlertContext";
 
 /**
  * Hook for managing the admin dashboard
@@ -21,8 +20,6 @@ import { AlertState } from "../types/alert";
  * @returns {EditingPost | null} editingPost - Currently edited post
  * @returns {Post[]} posts - Array of all posts
  * @returns {string} error - Error message if operation fails
- * @returns {AlertState} alertState - Current alert state
- * @returns {Function} closeAlert - Function to close the current alert
  * @returns {ContentState} contentState - Current content state
  * @returns {Function} handleSubmit - Function to handle post submission
  * @returns {Function} handleEdit - Function to handle post editing
@@ -53,7 +50,7 @@ import { AlertState } from "../types/alert";
 export const useAdminDashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPost, setEditingPost] = useState<EditingPost | null>(null);
-  const [alertState, setAlertState] = useState<AlertState>(initialAlertState);
+  const { showAlert } = useAlertContext();
   const {
     posts,
     error,
@@ -64,12 +61,9 @@ export const useAdminDashboard = () => {
     getContentState,
   } = usePosts();
 
-  const showAlert = useCallback((state: Partial<AlertState>) => {
-    setAlertState({ ...initialAlertState, ...state, isOpen: true });
-  }, []);
-
-  const closeAlert = useCallback(() => {
-    setAlertState(initialAlertState);
+  const handleCloseModal = useCallback(() => {
+    setIsModalOpen(false);
+    setEditingPost(null);
   }, []);
 
   const handleSubmit = useCallback(
@@ -98,7 +92,7 @@ export const useAdminDashboard = () => {
         });
       }
     },
-    [editingPost, updatePost, createPost, showAlert]
+    [editingPost, updatePost, createPost, showAlert, handleCloseModal]
   );
 
   const handleEdit = useCallback(async (post: Post) => {
@@ -133,27 +127,18 @@ export const useAdminDashboard = () => {
     [deletePost, showAlert]
   );
 
-  const handleCloseModal = useCallback(() => {
-    setIsModalOpen(false);
-    setEditingPost(null);
-  }, []);
-
   const openCreateModal = useCallback(() => {
     setIsModalOpen(true);
   }, []);
 
-  // Memoize the content state to prevent unnecessary recalculations
   const contentState = useMemo(() => getContentState(), [getContentState]);
 
-  // Memoize the returned object to prevent unnecessary re-renders
   const dashboardUtils = useMemo(
     () => ({
       isModalOpen,
       editingPost,
       posts,
       error,
-      alertState,
-      closeAlert,
       contentState,
       handleSubmit,
       handleEdit,
@@ -167,8 +152,6 @@ export const useAdminDashboard = () => {
       editingPost,
       posts,
       error,
-      alertState,
-      closeAlert,
       contentState,
       handleSubmit,
       handleEdit,

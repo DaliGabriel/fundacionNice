@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { usePosts } from "../../../../lib/hooks/usePosts";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { BlogCover } from "../../../../app/components/blog/BlogCover";
 import { BlogHeader } from "../../../../app/components/blog/BlogHeader";
 import { BlogContent } from "../../../../app/components/blog/BlogContent";
@@ -11,9 +11,11 @@ import { ErrorMessage } from "../../../../app/components/common/ErrorMessage";
 import { NotFound } from "../../../../app/components/common/NotFound";
 import { ContentLayout } from "../../../../app/components/common/ContentLayout";
 import { PageState } from "../../../../lib/types/blog";
+import Button from "../../../../app/components/common/Buttton";
 
 export default function BlogPostPage() {
   const { id } = useParams();
+  const router = useRouter();
   const { fetchPostById, currentPost, isLoading, error } = usePosts();
 
   useEffect(() => {
@@ -21,6 +23,10 @@ export default function BlogPostPage() {
       fetchPostById(id as string);
     }
   }, [id, fetchPostById]);
+
+  const handleBack = () => {
+    router.back();
+  };
 
   const getPageState = (): PageState => {
     if (isLoading) return { type: "loading" };
@@ -54,6 +60,10 @@ export default function BlogPostPage() {
                 buttonLink={state.post.buttonLink}
               />
             </ContentLayout>
+
+            <div className="flex justify-center mb-10">
+              <Button text="← Regresar" onClick={handleBack} />
+            </div>
           </>
         );
     }

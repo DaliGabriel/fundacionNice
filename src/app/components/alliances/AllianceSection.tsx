@@ -50,7 +50,13 @@ export const AllianceSection = ({
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
       <div className="absolute inset-0 bg-[#04315e] opacity-40 z-10" />
-      <div className="relative z-20 w-32 h-32 md:w-40 md:h-40">
+      <div
+        className={`relative z-20 ${
+          title === "Lúdica" || title === "Scholas Ocurrentes"
+            ? "w-60 h-60"
+            : "w-32 h-32"
+        }`}
+      >
         <Image
           src={logo}
           alt={`${title} logo`}
