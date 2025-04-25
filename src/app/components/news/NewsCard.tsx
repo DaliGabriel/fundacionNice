@@ -20,7 +20,7 @@ const NewsCard = ({ title, date, image, id }: NewsCardProps) => {
           <time className="text-md font-semibold text-gray-500 mb-2 block">
             {formatDateES(date)}
           </time>
-          <h3 className="text-2xl font-bold text-[#00295c] group-hover:text-blue-600 transition-colors duration-300">
+          <h3 className="text-2xl font-bold text-[#00295c] group-hover:text-[#92c0e9] transition-colors duration-300">
             {title}
           </h3>
         </div>

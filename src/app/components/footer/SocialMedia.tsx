@@ -10,6 +10,7 @@ export const SocialMedia = ({ title, socialLinks }: SocialMediaProps) => (
         href={socialLinks.instagram}
         aria-label="Instagram"
         className="flex items-center justify-center hover:scale-110 transition-all duration-300"
+        target="_blank"
       >
         <SocialMediaIcon type="instagram" className="text-white" />
       </Link>
@@ -17,6 +18,7 @@ export const SocialMedia = ({ title, socialLinks }: SocialMediaProps) => (
         href={socialLinks.facebook}
         aria-label="Facebook"
         className="flex items-center justify-center hover:scale-110 transition-all duration-300"
+        target="_blank"
       >
         <SocialMediaIcon type="facebook" className="text-white" />
       </Link>

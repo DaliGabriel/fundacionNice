@@ -22,12 +22,12 @@ const FilterBannerContent = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 mb-8 rounded-xl shadow-sm">
+    <div className="bg-[#e6e6e6] p-6 mb-8 rounded-xl shadow-sm">
       <div className="container mx-auto flex justify-center items-center">
         <div className="w-full max-w-md">
           <label
             htmlFor="news-filter"
-            className="text-sm font-medium text-blue-700 mb-2 flex items-center gap-2"
+            className="text-sm font-medium text-[#00295c] dark:text-[#00295c] mb-2 flex items-center gap-2"
           >
             <BiFilterAlt className="h-4 w-4" />
             Filtrar noticias por categoría
@@ -37,9 +37,9 @@ const FilterBannerContent = () => {
               id="news-filter"
               value={filter || "all"}
               onChange={handleFilterChange}
-              className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg bg-white text-gray-800 
-                appearance-none cursor-pointer hover:border-blue-300 transition-colors duration-200
-                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+              className="w-full px-4 py-3 border-2 border-gray rounded-lg bg-white text-gray-800 
+                appearance-none cursor-pointer hover:border-dark transition-colors duration-200
+                focus:outline-none focus:ring-2 focus:ring-dark focus:border-dark
                 font-medium"
             >
               <option value="all">Todas las noticias</option>
@@ -49,11 +49,11 @@ const FilterBannerContent = () => {
               <option value="teleton">Fundación Teletón</option>
               <option value="1111">Fundación 11 11</option>
             </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-blue-500">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#92c0e9]">
               <MdKeyboardArrowDown className="h-5 w-5" />
             </div>
           </div>
-          <p className="mt-2 text-sm text-blue-600">
+          <p className="mt-2 text-sm text-[#00295c] dark:text-[#00295c]">
             Selecciona una categoría para filtrar las noticias relacionadas
           </p>
         </div>

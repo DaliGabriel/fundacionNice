@@ -6,8 +6,8 @@ export const navigationItems = [
 ];
 
 export const socialLinks = {
-  instagram: "#",
-  facebook: "#",
+  instagram: "https://www.instagram.com/fundacionnice/",
+  facebook: "https://www.facebook.com/NICEoficialmx",
 };
 
 export const copyrightInfo = {
