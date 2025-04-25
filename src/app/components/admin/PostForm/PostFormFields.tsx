@@ -7,13 +7,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { useFileUpload } from "../../../../lib/hooks/useFileUpload";
 
-export const PostFormFields = ({
-  formData,
-  handleChange,
-}: PostFormFieldsProps) => {
+export const PostFormFields = ({ formData, handleChange }: PostFormFieldsProps) => {
   const [uploadingFields, setUploadingFields] = useState<
     Record<string, boolean>
   >({});
+
   const { uploadFile, error: uploadError } = useFileUpload();
 
   const handleImageUpload = async (

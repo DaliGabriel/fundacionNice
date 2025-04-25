@@ -45,19 +45,24 @@ export const BlogContent = ({
   buttonLink,
 }: BlogContentProps) => {
   return (
-    <div className="space-y-8">
-      <p className="text-lg text-gray-700 leading-relaxed">{paragraph1}</p>
+    <div className="space-y-6 sm:space-y-8">
+      
+      <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+        {paragraph1}
+      </p>
 
       <BlogImageGrid images={images1} startIndex={1} />
 
       {paragraph2 && (
-        <p className="text-lg text-gray-700 leading-relaxed">{paragraph2}</p>
+        <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+          {paragraph2}
+        </p>
       )}
 
       <BlogImageGrid images={images2} startIndex={2} />
 
       {buttonLink && (
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-6 sm:mt-8">
           <Link href={buttonLink}>
             <Button text="Galería de Fotos" />
           </Link>

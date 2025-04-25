@@ -9,11 +9,11 @@ export const BlogImageGrid = ({ images, startIndex }: BlogImageGridProps) => {
   if (validImages.length === 0) return null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
       {validImages.map((imageUrl, index) => (
         <div
           key={`${startIndex}-${index}`}
-          className="relative h-[250px] rounded-lg overflow-hidden"
+          className="relative h-[200px] sm:h-[250px] rounded-lg overflow-hidden"
         >
           <Image
             src={imageUrl}

@@ -19,7 +19,7 @@ export const useFileUpload = (): UseFileUploadReturn => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(ROUTES.API.ADMIN.UPLOAD, {
+      const response = await fetch(ROUTES.API.UPLOAD, {
         method: "POST",
         body: formData,
       });
