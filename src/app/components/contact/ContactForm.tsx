@@ -69,7 +69,7 @@ const ContactForm = () => {
               type="text"
               id="name"
               name="name"
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200"
+              className=" text-black dark:text-black w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200"
               required
               disabled={isLoading}
             />
@@ -86,7 +86,7 @@ const ContactForm = () => {
               type="email"
               id="email"
               name="email"
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200"
+              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200 text-black dark:text-black"
               required
               disabled={isLoading}
             />
@@ -103,7 +103,7 @@ const ContactForm = () => {
               type="text"
               id="subject"
               name="subject"
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200"
+              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200 text-black dark:text-black"
               required
               disabled={isLoading}
             />
@@ -120,7 +120,7 @@ const ContactForm = () => {
               id="message"
               name="message"
               rows={4}
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200 resize-none"
+              className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-[#FDB913] focus:outline-none transition-colors duration-200 resize-none text-black dark:text-black"
               disabled={isLoading}
             />
           </div>
