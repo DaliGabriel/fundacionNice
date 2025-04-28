@@ -11,7 +11,7 @@ const Hero = ({
 }: HeroProps) => {
   return (
     <div
-      className={`relative min-h-[400px] md:min-h-[500px] lg:min-h-[700px] w-full `}
+      className={`relative min-h-[400px] md:min-h-[500px] lg:min-h-[700px] w-full hero-container`}
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">

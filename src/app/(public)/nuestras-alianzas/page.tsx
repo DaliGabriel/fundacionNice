@@ -11,7 +11,7 @@ const NuestrasAlianzas = () => {
         image="/heros/nuestrasalianzas.jpg"
         mobileImage="/heros/nuestrasalianzasMobile.jpg"
       />
-      <div className="max-w-7xl mx-auto dark:bg-[#e6e6e6] bg-[#e6e6e6] text-black dark:text-black">
+      <div className="max-w-7xl mx-auto dark:bg-[#f2f2f2] bg-[#f2f2f2] text-black dark:text-black">
         <AllianceText />
         <div className="flex flex-col divide-y">
           {alliancesSection.map((alliance, index) => (

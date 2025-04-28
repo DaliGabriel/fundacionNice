@@ -22,7 +22,7 @@ const FilterBannerContent = () => {
   };
 
   return (
-    <div className="bg-[#e6e6e6] p-6 mb-8 rounded-xl shadow-sm">
+    <div className="bg-[#f2f2f2] p-6 mb-8 rounded-xl shadow-sm">
       <div className="container mx-auto flex justify-center items-center">
         <div className="w-full max-w-md">
           <label

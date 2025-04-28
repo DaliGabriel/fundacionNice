@@ -1,17 +1,19 @@
 "use client";
 
-import { useEffect } from "react";
-import { usePosts } from "../../../../lib/hooks/usePosts";
+import WaveEffect from "@/app/components/blog/WaveEffect";
+import YellowLine from "@/app/components/blog/YellowLine";
 import { useParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { BlogContent } from "../../../../app/components/blog/BlogContent";
 import { BlogCover } from "../../../../app/components/blog/BlogCover";
 import { BlogHeader } from "../../../../app/components/blog/BlogHeader";
-import { BlogContent } from "../../../../app/components/blog/BlogContent";
-import { LoadingSpinner } from "../../../../app/components/common/LoadingSpinner";
-import { ErrorMessage } from "../../../../app/components/common/ErrorMessage";
-import { NotFound } from "../../../../app/components/common/NotFound";
-import { ContentLayout } from "../../../../app/components/common/ContentLayout";
-import { PageState } from "../../../../lib/types/blog";
 import Button from "../../../../app/components/common/Buttton";
+import { ContentLayout } from "../../../../app/components/common/ContentLayout";
+import { ErrorMessage } from "../../../../app/components/common/ErrorMessage";
+import { LoadingSpinner } from "../../../../app/components/common/LoadingSpinner";
+import { NotFound } from "../../../../app/components/common/NotFound";
+import { usePosts } from "../../../../lib/hooks/usePosts";
+import { PageState } from "../../../../lib/types/blog";
 
 export default function BlogPostPage() {
   const { id } = useParams();
@@ -45,8 +47,12 @@ export default function BlogPostPage() {
         return <NotFound message="Post not found" />;
       case "loaded":
         return (
-          <>
+          <div className="relative bg-[#f2f2f2]">
             <BlogCover coverUrl={state.post.cover} title={state.post.title} />
+
+            <YellowLine />
+            <WaveEffect />
+
             <ContentLayout centered>
               <BlogHeader
                 title={state.post.title}
@@ -64,7 +70,7 @@ export default function BlogPostPage() {
             <div className="flex justify-center mb-10">
               <Button text="← Regresar" onClick={handleBack} />
             </div>
-          </>
+          </div>
         );
     }
   };

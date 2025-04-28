@@ -18,9 +18,9 @@ const ChangingLifesDesktop = () => {
           />
         </div>
         <WaveTop />
-        <div className="relative lg:py-10 xl:py-24 2xl:py-28 w-full">
+        <div className="relative lg:py-10 xl:py-24 2xl:py-28 changing-lives-custom-py w-full">
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <div className="w-full h-full max-w-[2000px] mx-auto relative">
+            <div className="w-full h-full mx-auto relative">
               <BackgroundPattern pattern="/divs/Div2.svg" />
             </div>
           </div>

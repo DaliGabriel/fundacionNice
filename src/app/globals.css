@@ -24,3 +24,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom breakpoint for 2560px screens */
+@media screen and (min-width: 2560px) {
+  .hero-container {
+    min-height: 1200px !important;
+  }
+  
+  .changing-lives-custom-py {
+    padding-top: 12rem !important; /* 192px */
+    padding-bottom: 12rem !important; /* 192px */
+  }
+
+  .custom-yellow-bar-height {
+    height: 150px !important;
+  }
+  
+  .custom-wave-effect-top {
+    top: 650px !important;
+  }
+}
