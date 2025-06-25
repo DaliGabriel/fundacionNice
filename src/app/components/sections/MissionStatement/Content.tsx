@@ -4,7 +4,7 @@ const Content = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center text-gray-300">
           <p className="text-lg sm:text-xl leading-relaxed">
-            En Fundación Nice hemos estado trabajando desde 1998{" "}
+            En Fundación Nice hemos estado trabajando desde 1998 x{" "}
             <br className="hidden sm:block" />
             incansablemente para forjar un{" "}
             <span className="text-white font-semibold">
